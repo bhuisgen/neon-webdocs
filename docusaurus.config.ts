@@ -3,8 +3,8 @@ import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
-  title: "Neon Project",
-  tagline: "A web server ready for serving your application",
+  title: "Neon Documentation",
+  tagline: "Neon Documentation",
   favicon: "img/favicon.ico",
   url: "https://bhuisgen.github.io",
   baseUrl: "/neon-webdocs",
@@ -84,7 +84,67 @@ const config: Config = {
     },
   } satisfies Preset.ThemeConfig,
 
-  plugins: [],
+  plugins: [
+    [
+      "@docusaurus/plugin-pwa",
+      {
+        debug: true,
+        offlineModeActivationStrategies: [
+          "appInstalled",
+          "standalone",
+          "queryString",
+        ],
+        pwaHead: [
+          {
+            tagName: "link",
+            rel: "icon",
+            href: "/img/logo512.png",
+          },
+          {
+            tagName: "link",
+            rel: "manifest",
+            href: "/manifest.json",
+          },
+          {
+            tagName: "meta",
+            name: "theme-color",
+            content: "rgb(255, 255, 255)",
+          },
+          {
+            tagName: "meta",
+            name: "apple-mobile-web-app-capable",
+            content: "yes",
+          },
+          {
+            tagName: "meta",
+            name: "apple-mobile-web-app-status-bar-style",
+            content: "#000",
+          },
+          {
+            tagName: "link",
+            rel: "apple-touch-icon",
+            href: "/img/logo512.png",
+          },
+          {
+            tagName: "link",
+            rel: "mask-icon",
+            href: "/img/logo512.svg",
+            color: "rgb(0, 0, 0)",
+          },
+          {
+            tagName: "meta",
+            name: "msapplication-TileImage",
+            content: "/img/logo512.png",
+          },
+          {
+            tagName: "meta",
+            name: "msapplication-TileColor",
+            content: "#000",
+          },
+        ],
+      },
+    ],
+  ],
 
   themes: [
     [
