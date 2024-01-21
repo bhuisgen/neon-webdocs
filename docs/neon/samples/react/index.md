@@ -31,38 +31,36 @@ TODO
 ## Configuration
 
 ```yaml title="neon.yaml"
-listeners:
-  default:
-    tls:
-      listenAddr: 0.0.0.0
-      listenPort: 443
-      caFile: ca.pem
-      certFile: cert.pem
-      keyFile: key.pem
+server:
+  listeners:
+    default:
+      tls:
+        listenAddr: 0.0.0.0
+        listenPort: 443
+        caFile: ca.pem
+        certFile: cert.pem
+        keyFile: key.pem
+  sites:
+    default:
+      listeners:
+        - default
+      routes:
+        default:
+          middlewares:
+            logger:
 
-servers:
-  default:
-    listeners:
-      - default
+            compress:
+              level: -1
 
-    routes:
-      default:
-        middlewares:
-          logger:
-
-          compress:
-            level: -1
-
-          static:
-            path: public/
-            index: true
-
-      handler:
-        app:
-          index: dist/index.html
-          bundle: dist/bundle.js
-          cache: true
-          cacheTTL: 3600
+            static:
+              path: public/
+              index: true
+          handler:
+            app:
+              index: dist/index.html
+              bundle: dist/bundle.js
+              cache: true
+              cacheTTL: 3600
 ```
 
 ## Improve

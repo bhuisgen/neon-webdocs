@@ -33,55 +33,19 @@ const sidebars: SidebarsConfig = {
             "neon/configuration/overview/index",
             {
               type: "category",
-              label: "Listeners",
+              label: "Store",
               items: [
-                "neon/configuration/listeners/overview/index",
-                "neon/configuration/listeners/listener/index",
-                {
-                  type: "category",
-                  label: "Modules",
-                  items: [
-                    "neon/configuration/listeners/modules/acme/index",
-                    "neon/configuration/listeners/modules/local/index",
-                    "neon/configuration/listeners/modules/redirect/index",
-                    "neon/configuration/listeners/modules/tls/index",
-                  ],
-                },
-              ],
-            },
-            {
-              type: "category",
-              label: "Servers",
-              items: [
-                "neon/configuration/servers/overview/index",
-                "neon/configuration/servers/server/index",
+                "neon/configuration/store/overview/index",
+                "neon/configuration/store/store/index",
                 {
                   type: "category",
                   label: "Modules",
                   items: [
                     {
                       type: "category",
-                      label: "Middlewares",
+                      label: "Storage",
                       items: [
-                        "neon/configuration/servers/modules/middlewares/compress/index",
-                        "neon/configuration/servers/modules/middlewares/header/index",
-                        "neon/configuration/servers/modules/middlewares/logger/index",
-                        "neon/configuration/servers/modules/middlewares/rewrite/index",
-                        "neon/configuration/servers/modules/middlewares/static/index",
-                      ],
-                    },
-                    {
-                      type: "category",
-                      label: "Handlers",
-                      items: [
-                        "neon/configuration/servers/modules/handlers/app/index",
-                        "neon/configuration/servers/modules/handlers/feed/index",
-                        "neon/configuration/servers/modules/handlers/file/index",
-                        "neon/configuration/servers/modules/handlers/empty/index",
-                        "neon/configuration/servers/modules/handlers/resource/index",
-                        "neon/configuration/servers/modules/handlers/robots/index",
-                        "neon/configuration/servers/modules/handlers/sitemap/index",
-                        "neon/configuration/servers/modules/handlers/template/index",
+                        "neon/configuration/store/modules/storage/memory/index",
                       ],
                     },
                   ],
@@ -100,7 +64,7 @@ const sidebars: SidebarsConfig = {
                   items: [
                     {
                       type: "category",
-                      label: "Providers",
+                      label: "Provider",
                       items: [
                         "neon/configuration/fetcher/modules/providers/rest/index",
                       ],
@@ -121,10 +85,76 @@ const sidebars: SidebarsConfig = {
                   items: [
                     {
                       type: "category",
-                      label: "Parsers",
+                      label: "Parser",
                       items: [
                         "neon/configuration/loader/modules/parsers/raw/index",
                         "neon/configuration/loader/modules/parsers/json/index",
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+
+            {
+              type: "category",
+              label: "Server",
+              items: [
+                "neon/configuration/server/overview/index",
+                "neon/configuration/server/server/index",
+                {
+                  type: "category",
+                  label: "Listeners",
+                  items: [
+                    "neon/configuration/server/listeners/overview/index",
+                    "neon/configuration/server/listeners/listener/index",
+                    {
+                      type: "category",
+                      label: "Modules",
+                      items: [
+                        "neon/configuration/server/listeners/modules/acme/index",
+                        "neon/configuration/server/listeners/modules/local/index",
+                        "neon/configuration/server/listeners/modules/redirect/index",
+                        "neon/configuration/server/listeners/modules/tls/index",
+                      ],
+                    },
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Sites",
+                  items: [
+                    "neon/configuration/server/sites/overview/index",
+                    "neon/configuration/server/sites/site/index",
+                    {
+                      type: "category",
+                      label: "Modules",
+                      items: [
+                        {
+                          type: "category",
+                          label: "Middleware",
+                          items: [
+                            "neon/configuration/server/sites/modules/middlewares/compress/index",
+                            "neon/configuration/server/sites/modules/middlewares/header/index",
+                            "neon/configuration/server/sites/modules/middlewares/logger/index",
+                            "neon/configuration/server/sites/modules/middlewares/rewrite/index",
+                            "neon/configuration/server/sites/modules/middlewares/static/index",
+                          ],
+                        },
+                        {
+                          type: "category",
+                          label: "Handler",
+                          items: [
+                            "neon/configuration/server/sites/modules/handlers/app/index",
+                            "neon/configuration/server/sites/modules/handlers/feed/index",
+                            "neon/configuration/server/sites/modules/handlers/file/index",
+                            "neon/configuration/server/sites/modules/handlers/empty/index",
+                            "neon/configuration/server/sites/modules/handlers/resource/index",
+                            "neon/configuration/server/sites/modules/handlers/robots/index",
+                            "neon/configuration/server/sites/modules/handlers/sitemap/index",
+                            "neon/configuration/server/sites/modules/handlers/template/index",
+                          ],
+                        },
                       ],
                     },
                   ],

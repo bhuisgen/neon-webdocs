@@ -16,39 +16,35 @@ Build your hugo to generate the `public/` directory:
 ## Configuration
 
 ```yaml
-listeners:
-  default:
-    tls:
-      listenAddr: 0.0.0.0
-      listenPort: 443
-      caFiles:
-        - ca.pem
-      certFiles:
-        - cert.pem
-      keyFiles:
-        - key.pem
-
-servers:
-  default:
-    listeners:
-      - default
-
-    routes:
-      default:
-        middlewares:
-          logger:
-
-          compress:
-            level: -1
-
-          static:
-            path: public/
-            index: true
-
-        handler:
-          file:
-            path: public/404/index.html
-            statusCode: 404
-            cache: true
-            cacheTTL: 3600
+server:
+  listeners:
+    default:
+      tls:
+        listenAddr: 0.0.0.0
+        listenPort: 443
+        caFiles:
+          - ca.pem
+        certFiles:
+          - cert.pem
+        keyFiles:
+          - key.pem
+  sites:
+    default:
+      listeners:
+        - default
+      routes:
+        default:
+          middlewares:
+            logger:
+            compress:
+              level: -1
+            static:
+              path: public/
+              index: true
+          handler:
+            file:
+              path: public/404/index.html
+              statusCode: 404
+              cache: true
+              cacheTTL: 3600
 ```
