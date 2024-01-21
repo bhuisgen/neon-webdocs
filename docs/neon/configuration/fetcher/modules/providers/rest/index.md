@@ -6,26 +6,26 @@ toc_max_heading_level: 2
 
 The `rest` provider is used to fetch REST API resources.
 
-- [Example configuration](./#example-configuration)
-- [Directives](./#directives)
+- [Example configuration](#example-configuration)
+- [Directives](#directives)
 
-  - [`tlsCAFiles`](./#tlsCAFiles)
-  - [`tlsCertFiles`](./#tlsCertFiles)
-  - [`tlsKeyFile`](./#tlsKeyFiles)
-  - [`timeout`](./#timeout)
-  - [`maxConnsPerHost`](./#maxConnsPerHost)
-  - [`maxIdleConns`](./#maxIdleConns)
-  - [`maxIdleConnsPerHost`](./#maxIdleConnsPerHost)
-  - [`idleConnTimeout`](./#idleConnTimeout)
-  - [`retry`](./#retry)
-  - [`retryDelay`](./#retryDelay)
-  - [`headers`](./#headers)
+  - [`tlsCAFiles`](#tlsCAFiles)
+  - [`tlsCertFiles`](#tlsCertFiles)
+  - [`tlsKeyFile`](#tlsKeyFiles)
+  - [`timeout`](#timeout)
+  - [`maxConnsPerHost`](#maxConnsPerHost)
+  - [`maxIdleConns`](#maxIdleConns)
+  - [`maxIdleConnsPerHost`](#maxIdleConnsPerHost)
+  - [`idleConnTimeout`](#idleConnTimeout)
+  - [`retry`](#retry)
+  - [`retryDelay`](#retryDelay)
+  - [`headers`](#headers)
 
-- [Resource configuration](./#resource-configuration)
-  - [`method`](./#resource-method)
-  - [`url`](./#resource-url)
-  - [`headers`](./#resource-headers)
-  - [`params`](./#resource-params)
+- [Resource configuration](#resource-configuration)
+  - [`method`](#resource-method)
+  - [`url`](#resource-url)
+  - [`headers`](#resource-headers)
+  - [`params`](#resource-params)
 
 ## Example configuration
 

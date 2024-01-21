@@ -6,8 +6,8 @@ toc_max_heading_level: 2
 
 The `raw` parser loads a resource.
 
-- [Example configuration](./#example-configuration)
-  - [`resource`](./#resource)
+- [Example configuration](#example-configuration)
+  - [`resource`](#resource)
 
 ## Example configuration
 

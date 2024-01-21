@@ -4,7 +4,7 @@ toc_max_heading_level: 2
 
 # Overview
 
-The configuration of Neon is done through a generic configuration file.
+The configuration of Neon is done by its configuration file.
 
 ## Configuration file
 
@@ -14,7 +14,7 @@ By default, the configuration file must be located in the current working direct
 
 :::tip
 
-You can override the default configuration file by setting the environment variable [`CONFIG_FILE`](./#config_file).
+You can override the default configuration file by setting the environment variable [`CONFIG_FILE`](#config_file).
 
 :::
 

@@ -6,12 +6,12 @@ toc_max_heading_level: 2
 
 The `json` parser loads a resource and iterate over its results to load other resources.
 
-- [Example configuration](./#example-configuration)
-- [Directives](./#directives)
-  - [`resource`](./#resource)
-  - [`filter`](./#filter)
-  - [`itemParams`](./#itemParams)
-  - [`itemResource`](./#itemResource)
+- [Example configuration](#example-configuration)
+- [Directives](#directives)
+  - [`resource`](#resource)
+  - [`filter`](#filter)
+  - [`itemParams`](#itemParams)
+  - [`itemResource`](#itemResource)
 
 ## Example configuration
 

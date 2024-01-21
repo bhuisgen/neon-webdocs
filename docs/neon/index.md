@@ -16,8 +16,6 @@ These capabilities allow to serve contentful web pages with minimal loading time
 
 ## How does it work ?
 
-### Concept
-
 The workflow of Neon can be resumed by this schema:
 
 ![Neon workflow](./workflow.png "Neon workflow")
@@ -28,7 +26,7 @@ The first step is to fetch all resources required for an application for its con
 
 **Render**
 
-The second step is to render the application pages. In case of a Javascript applpication, this is done by executing its bundle file with the internal Javascript VM. The final render contains all required content and is ready for any clients like SEO bots and browsers.
+The second step is to render the application pages. In case of a Javascript application, this is done by executing its bundle file with the internal Javascript VM. The final render contains all required content and is ready to serve to any clients including SEO bots.
 
 **Store**
 

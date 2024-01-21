@@ -4,10 +4,4 @@ toc_max_heading_level: 2
 
 # Overview
 
-The `loader` section lists all the rules to load the server state.
-
-:::info
-
-This section is not required to start an instance.
-
-:::
+The **loader** is the component who load and refresh the instance state through its [fetcher](/neon/configuration/fetcher/overview/).

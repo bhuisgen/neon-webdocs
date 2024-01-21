@@ -4,17 +4,23 @@ toc_max_heading_level: 2
 
 # Loader
 
-The `loader` section contains all the settings to loading of the resources.
+The `loader` section contains all the configuration settings of the [loader](/neon/configuration/loader/overview/).
 
-- [Example configuration](./#example-configuration)
-- [Directives](./#directives)
-  - [`execStartup`](./#execStartup)
-  - [`execInterval`](./#execInterval)
-  - [`execFailsafeInterval`](./#execFailsafeInterval)
-  - [`execWorkers`](./#execWorkers)
-  - [`execMaxOps`](./#execMaxOps)
-  - [`execMaxDelay`](./#execMaxDelay)
-  - [`rules`](./#rules)
+:::info
+
+This section is not required to start an instance.
+
+:::
+
+- [Example configuration](#example-configuration)
+- [Directives](#directives)
+  - [`execStartup`](#execStartup)
+  - [`execInterval`](#execInterval)
+  - [`execFailsafeInterval`](#execFailsafeInterval)
+  - [`execWorkers`](#execWorkers)
+  - [`execMaxOps`](#execMaxOps)
+  - [`execMaxDelay`](#execMaxDelay)
+  - [`rules`](#rules)
 
 ## Example configuration
 
@@ -117,7 +123,7 @@ This setting prevents any excessive CPU usage of the instance as well as any bac
 
 The interval delay in seconds between each delayed execution.
 
-This setting corresponds to the pause interval between each batch of [`execMaxOps`](./#execMaxOps) operations.
+This interval is the period of time between each batch of [`execMaxOps`](#execMaxOps) operations.
 
 ### `rules` {#rules}
 

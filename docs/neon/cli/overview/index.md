@@ -16,8 +16,9 @@ Options:
   -v    Print version information and quit
 
 Commands:
-  check            Check the configuration
   init             Generate a new configuration file
+  register         Register the user license
+  check            Check the configuration
   serve            Run the server instance
 
 Run 'neon COMMAND --help' for more information on a command.
@@ -27,4 +28,4 @@ Run 'neon COMMAND --help' for more information on a command.
 
 To show the help available for a specific command, run the command with `help`:
 
-    $ neon serve --help
+    $ neon -v

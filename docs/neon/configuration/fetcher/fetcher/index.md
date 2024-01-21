@@ -4,11 +4,17 @@ toc_max_heading_level: 2
 
 # Fetcher
 
-The `fetcher` section contains all the settings related to fetch the state.
+The `fetcher` section contains all the configuration settings of the [fetcher](/neon/configuration/fetcher/overview/).
 
-- [Example configuration](./#example-configuration)
-- [Directives](./#directives)
-  - [`providers`](./#providers)
+:::info
+
+This section is not required to start an instance.
+
+:::
+
+- [Example configuration](#example-configuration)
+- [Directives](#directives)
+  - [`providers`](#providers)
 
 ## Example configuration
 
