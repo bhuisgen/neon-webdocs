@@ -86,6 +86,7 @@ const config: Config = {
     [
       "@easyops-cn/docusaurus-search-local",
       {
+        docsRouteBasePath: "/",
         hashed: true,
       },
     ],
