@@ -34,6 +34,10 @@ const config: Config = {
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
+
+        gtag: {
+          trackingID: "G-4M4927PRN5",
+        },
       } satisfies Preset.Options,
     ],
   ],
