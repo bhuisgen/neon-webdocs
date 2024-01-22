@@ -78,7 +78,9 @@ Enable the render cache.
     Unit:           second
 ```
 
-The TTL of cached renders in seconds.
+The TTL of cached render in seconds.
+
+When the TTL is expired, a new render is processed.
 
 ### `resources` {#resources}
 

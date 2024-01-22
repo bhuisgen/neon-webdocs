@@ -19,6 +19,10 @@ The `app` handler allows to serve a Javascript application composed of its HTML 
   - [`maxSpareVMs`](#maxSpareVMs)
   - [`cache`](#cache)
   - [`cacheTTL`](#cacheTTL)
+  - [`cacheMaxItems`](#cacheMaxItems)
+  - [`cacheMaxSize`](#cacheMaxSize)
+  - [`cacheMinBodySize`](#cacheMinBodySize)
+  - [`cacheMaxBodySize`](#cacheMaxBodySize)
   - [`languages`](#languages)
   - [`defaultLanguage`](#defaultLanguage)
   - [`rules`](#rules)
@@ -167,7 +171,7 @@ The HTML identifier of the container to render the application.
 
 :::warning
 
-The value should match to your client-side application.
+The value should match to your application.
 
 :::
 
@@ -186,7 +190,7 @@ the same key.
 
 :::warning
 
-The value should match to your client-side application.
+The value should match to your application.
 
 :::
 
@@ -211,12 +215,6 @@ The timeout to execute the bundle.
 ```
 
 The number of Javascript VMs to run simultaneously.
-
-:::warning
-
-Check the memory usage of your instance to improve the configuration of this setting.
-
-:::
 
 ### `minSpareVMs` {#minSpareVMs}
 
@@ -270,6 +268,61 @@ Enable the render cache.
 ```
 
 The TTL of cached renders in seconds.
+
+When the TTL is expired, a new render is processed.
+
+### `cacheMaxItems` {#cacheMaxItems}
+
+```
+    Syntax:         cacheMaxItems: <count>
+    Type:           numeric
+    Default:        100
+    Unit:           item
+```
+
+The maximum number of items in the cache.
+
+When this limit is reached, the least resource used is evicted, meaning only the most used resources are kept in the cache.
+
+:::warning
+
+This option limits the memory usage of the instance.
+
+:::
+
+### `cacheMinBodySize` {#cacheMinBodySize}
+
+```
+    Syntax:         cacheMinBodySize: <size>
+    Type:           numeric
+    Default:        0
+    Unit:           bytes
+```
+
+The minimum body size of the render.
+
+:::note neon-pro
+
+This feature is only available in Neon Pro.
+
+:::
+
+### `cacheMaxBodySize` {#cacheMaxBodySize}
+
+```
+    Syntax:         cacheMaxBodySize: <size>
+    Type:           numeric
+    Default:        0
+    Unit:           bytes
+```
+
+The maximum body size of the render.
+
+:::note neon-pro
+
+This feature is only available in Neon Pro.
+
+:::
 
 ### `languages` {#languages}
 
