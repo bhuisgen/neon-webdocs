@@ -37,7 +37,7 @@ listeners:
     # highlight-end
 ```
 
-- The instance listens on all network interfaces with port 443.
+- The **default** listener listens on all network interfaces with port 443.
 - TLS is enabled with a CA certificate, a server certificate and its private key.
 
 ## Directives

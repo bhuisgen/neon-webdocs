@@ -25,14 +25,14 @@ fetcher:
 
 loader:
   rules:
-    load-pokemons:
+    load-posts:
       # highlight-start
       json:
         resource:
-          pokemons: # resource name
-            default: # provider name
+          posts:
+            api:
               method: GET
-              url: https://pokeapi.co/api/v2/pokemon
+              url: https://backend/api/posts
               next: true
               nextParser: body
               nextFilter: $.next
@@ -41,20 +41,19 @@ loader:
           name: $.name
           url: $.url
         itemResource:
-          pokemon-$name:
-            default:
+          post-$name:
+            api:
               method: GET
               url: $url
       # highlight-end
 ```
 
-- The provider `api` is defined and uses the `rest` provider to fetch a remote JSON API.
-- The loader has the rule `load-pokemons` which triggers the fetching of the resource `load-pokemons`.
-- The parser `json` triggers the fetching to the provider `api` and parses the response to extract the items list
-  following the JSON path of the option `filter`. For each item, the attribute `name` and `url` are extracted given
-  their respective JSON path in `itemParams`. Each parameter will be available as a dynamic parameter (its key
-  prefixed by `$`) to the item resource defined by `itemResource`. Finally, each item resources are loaded and stored
-  in the server state.
+- The provider **api** is defined to use the `rest` provider which fetches a remote JSON API.
+- The loader has the rule **load-posts** which executes the parser `json`.
+- The parser `json` triggers the provider **api\_ to fetch the resource **posts\* and parses its response to extract the
+  items list following the JSON path `filter`. For each item, the attribute **name** and **url** are extracted
+  given their respective JSON path in `itemParams`. Each parameter will be available as a dynamic parameter to the item
+  resource **post-$name**. Finally, each item resources are fetched and stored/refreshed in the server state.
 
 ## Directives
 
@@ -68,13 +67,11 @@ loader:
 
 The resource to load.
 
-**Example:**
-
 ```yaml
 resource:
-  my-resource:
-    my-provider:
-      provider-config: value
+  <name>:
+    <provider>:
+      # config
 ```
 
 ### `filter` {#filter}
@@ -126,7 +123,7 @@ The resource to load an item extracted.
 ```yaml
 itemResource:
   item-$id:
-    my-provider:
+    api:
       params:
         id: $id # dynamic parameter
         language: en

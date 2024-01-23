@@ -14,6 +14,6 @@ $ neon check
 
 ## Description
 
-Use this command to check the configuration file before running the instance.
+Use this command to check the configuration file before running the server instance.
 
 The default configuration file is used. To use an alternative configuration, set the environment variable `CONFIG_FILE`.

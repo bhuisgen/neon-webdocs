@@ -14,29 +14,25 @@ By default, the configuration file must be located in the current working direct
 
 :::tip
 
-You can override the default configuration file by setting the environment variable [`CONFIG_FILE`](#config_file).
+You can specity a different configuration file by setting the environment variable [`CONFIG_FILE`](#config_file).
 
 :::
 
 ### Syntax
 
-The syntax of the configuration is YAML.
+The syntax of the configuration is in YAML.
 
-The file is composed of different sections. Each section can have settings or other sections. A section is defined by
-its own name (a string). A setting can have one value (single value) or multiple values (multi value list) from these
-types:
+The file is composed of different sections. Each section can have options or other sections. A section is defined by
+its own name. An option can have one value (single value) or multiple values (multi-value list) from these types:
 
-- a string: for textual content
-- a number: for numeric content following the given unit
-- a boolean: to enable/disable the given setting
+- string: for textual content
+- number: for numeric content
+- boolean: to enable/disable the option
 - an object: a group of settings
-
-Some settings accept free values other not. But as a design choice, any invalid values are skipped and default values
-are used in fallback to prevent any instance startup failure.
 
 ## Environment variables
 
-You can override some configuration through the use of environment variables:
+You can override some configuration settings through the use of environment variables:
 
 ### `CONFIG_FILE`
 

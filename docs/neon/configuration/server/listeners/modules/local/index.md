@@ -33,7 +33,7 @@ listeners:
     # highlight-end
 ```
 
-- The instance listens on all network interfaces with port 80.
+- The **default** listener is listening on all network interfaces with port 80.
 
 ## Directives
 

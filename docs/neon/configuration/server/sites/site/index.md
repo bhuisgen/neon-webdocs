@@ -4,7 +4,7 @@ toc_max_heading_level: 2
 
 # Site
 
-A site is the configuration block required to serve a site.
+A **site** is a website hosted by the server instance.
 
 - [Example configuration](#example-configuration)
 - [Directives](#directives)
@@ -19,7 +19,7 @@ A site is the configuration block required to serve a site.
 ```yaml
 server:
   sites:
-    default:
+    main:
       listeners:
         - default
       routes:
@@ -48,8 +48,8 @@ server:
 ```
 
 - Two sites are defined using the same network listener `default`.
-- The first site is used by default as no host is specified.
-- The second site defines a host to limit its access from the host `admin.example.org`.
+- The first site `main` is used by default as no host is specified.
+- The second site `admin` defines a host to limit its access to the only host `admin.example.org`.
 
 ## Directives
 
@@ -71,57 +71,36 @@ This list defines the listeners to attach the site.
     Default:        -
 ```
 
-This map defines each site routes.
-
-Depending of its name a route can have different types:
-
-- an internal route triggers a specific behavior of the site.
-
-- a regular route matches the request path i.e. the _route path_ is matching.
-
-The route selection order may vary depending on which internal route may or may not have a higher priority.
-
-:::tip
-
-Keep your configuration ordered like this:
-
-- first the internal routes starting from the lowest priorities to higher (i.e. `default`)
-- next the regular routes with names delimited by quotes (excluding the trailing colon as map key).
-- each route must define first the middlewares chain and next the handlers chain.
-
-:::
-
-**Example:**
+This map defines each site routes as a pair route name / configuration:
 
 ```yaml
 routes:
   default:
     middlewares:
-      middleware1:
-        # ...
-      middleware2:
-        # ...
-
+      # ...
     handler:
-      defaultHandler:
-        # ...
-
+      # ...
   "/route1":
-    # ...
-
-  "/route2":
-    # ...
-
-  "/route3":
-    # ...
+    middlewares:
+      # ...
+    handler:
+      # ...
 ```
+
+Depending of its name a route can have different types:
+
+- an internal route triggers a specific behavior.
+
+- a regular route processes the request if its request path and the _route path_ are matching.
+
+The route selection order may vary depending on which internal route may or may not have a higher priority.
 
 **Internal routes**
 
 The available internal routes are:
 
-- `default`: the configuration of this route is applied if no regular route matches the request. Its priority is lower
-  than regular routes.
+- `default`: the configuration of this route is applied if no regular route matching the request exists. Its priority is
+  lower than regular routes.
 
 **Regular routes**
 
@@ -134,16 +113,20 @@ The regular routes have these naming conventions:
 - if a trailing `/` is present, the route will match all children of this path, excepted if another regular route is
   already defined.
 
-:::info
-
-The `default` internal route is different from the regular route `/` as the former allows to reuse its configuration by
-_default_ to other defined regular routes but without configuration.
-
-:::
-
 :::warning
 
-Regular expressions or glob patterns are not supported for routes names.
+- Regular expressions or glob patterns are not supported for routes names.
+- The regular route **/** is used to override the inherited configuration from the internal route `default`. But if no
+  other regular route exists, the regular route **/** precedes the `default` internal route.
+  :::
+
+:::tip
+
+Keep your routing configuration ordered like this:
+
+- first the internal routes starting from the lowest priorities to higher, next the regular routes ordered by names.
+- each regular routes names should be delimited by quotes.
+- each route should define first its middlewares chain and second its handler.
 
 :::
 
@@ -157,40 +140,24 @@ Regular expressions or glob patterns are not supported for routes names.
     Default:        -
 ```
 
-This map defines the site middlewares of the given route.
+This map defines the middlewares of the given route.
 
-Each middleware will be executed one after another composing _the middlewares chain_. The middlewares chain of the
+Each middleware will be executed one after the other composing _the middlewares chain_. The middlewares chain of the
 default route is commonly called _the default middlewares chain_.
-
-**Example**
 
 ```yaml
 routes:
   "/path":
     middlewares:
-      logger: # first middleware executed
-
-      compress: # second middleware executed
-        level: -1
+      middleware1:
+        # config
+      middleware2:
+        # config
 ```
 
-:::tip
+:::warning
 
-To prevent the execution of the internal `default` route middlewares chain, specify an empty chain:
-
-```yaml
-routes:
-  default:
-    middlewares:
-      logger:
-
-  "/path1":
-    # this route will inherit of the middlewares chain from the default policy
-
-  "/path2":
-    middlewares:
-      # an empty chain will prevent inheriting
-```
+If a regular route defines no middleware, the default route middlewares chain will be used.
 
 :::
 
@@ -202,27 +169,26 @@ routes:
     Default:        -
 ```
 
-This object defines the site handler of the given route.
+This object defines the handler of the given route.
 
 The handler will be executed after the middlewares chain.
-
-**Example**
 
 ```yaml
 routes:
   "/path":
     middlewares:
-      logger: # first middleware
-        file: access.log
-      compress: # second middleware
-        level: -1
+      middleware1:
+        # config
+      middleware2:
+        # config
     handler:
-      app:# handler
-      # ...
+      handler1:
+        # config
 ```
 
 :::warning
 
-If no handler is defined, an HTTP 503 error is returned.
+- If a regular route defines no handler, the default route handler will be used.
+- If the default route defines no handler, an empty HTTP 404 response will be returned.
 
 :::

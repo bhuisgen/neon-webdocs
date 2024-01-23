@@ -45,7 +45,7 @@ listeners:
     # highlight-end
 ```
 
-- The instance listens on all network interfaces with port 443.
+- The **default** listener is listening on all network interfaces with port 443.
 - The acme manager will be listening on port 80 to respond to the ACME challenges. All other requests will be
   redirected to the secured port i.e. `https://<host>:<listenPort>`.
 

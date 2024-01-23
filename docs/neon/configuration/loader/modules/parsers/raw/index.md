@@ -4,7 +4,7 @@ toc_max_heading_level: 2
 
 # raw
 
-The `raw` parser loads a resource.
+The `raw` parser loads a resource and store its response.
 
 - [Example configuration](#example-configuration)
   - [`resource`](#resource)
@@ -21,20 +21,20 @@ fetcher:
 
 loader:
   rules:
-    load-pokemon:
+    load-post1:
       # highlight-start
       raw:
         resource:
-          pokemon-bulbasaur:
+          post1:
             default:
               method: GET
-              url: https://pokeapi.co/api/v2/pokemon/1
+              url: https://backend/posts/1
       # highlight-end
 ```
 
-- The provider `api` is defined and uses the `rest` provider to fetch a remote JSON API.
-- The loader has the rule `load-pokemon` which triggers the fetching of the resource `pokemon-bulbasaur`.
-- The parser `raw` triggers the fetching to the provider `api` and store its response into the server state.
+- The provider **api** is defined to use the `rest` provider which fetches a remote JSON API.
+- The loader has the rule **load-post1** which executes the parser `raw`.
+- The parser `raw` triggers the provider **api** to fetch the resource **post1** and to store/refresh the server state.
 
 ## Directives
 
@@ -48,11 +48,9 @@ loader:
 
 The resource to load.
 
-**Example:**
-
 ```yaml
 resource:
-  my-resource:
-    my-provider:
-      provider-config: value
+  <name>:
+    <provider>:
+      # config
 ```

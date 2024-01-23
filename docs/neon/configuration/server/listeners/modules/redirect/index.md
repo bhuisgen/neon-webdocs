@@ -51,8 +51,9 @@ server:
       # ...
 ```
 
-- The listener `redirect` listens on port 80.
-- If a request `http://example.org/` forwards to it, the listener will return a HTTP redirect with the target URL `https://example.org` i.e. replacing the scheme http by https.
+- The **unsecured** listener is listening on all interfaces with port 80.
+- If a request `http://example.org/` forwards to it, the listener will return a HTTP redirect with the target URL
+  `https://example.org` i.e. replacing the scheme http by https.
 
 ## Directives
 

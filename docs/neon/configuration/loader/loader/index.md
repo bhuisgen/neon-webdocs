@@ -8,7 +8,7 @@ The `loader` section contains all the configuration settings of the [loader](/ne
 
 :::info
 
-This section is not required to start an instance.
+This section is not required to start the server instance.
 
 :::
 
@@ -29,25 +29,25 @@ loader:
   execStartup: 15
   execInterval: 900
   rules:
-    load-pokemon-1:
+    load-resource1:
       raw:
         resource:
-          pokemon:
+          first:
             api:
               method: GET
-              url: https://pokeapi.co/api/v2/pokemon/1
-    load-pokemon-2:
+              url: https://backend/api/v1/resource/1
+    load-resource2:
       raw:
         resource:
-          pokemon:
+          second:
             api:
               method: GET
-              url: https://pokeapi.co/api/v2/pokemon/2
+              url: https://backend/api/v1/resource/2
 ```
 
 - The loader is executed `15` seconds after the instance startup and then every `900` seconds.
-- For each pass all rules are evaluated, triggering the fetch of all resources to refresh them into the server state.
-- In case of a fetch error, the previous resource data is kept as is.
+- For each pass all rules are evaluated and execute the parser module `raw`.
+- The `raw` perser triggers the provider **api** to fetch the resources and store/refresh them into the server state.
 
 ## Directives
 
@@ -84,8 +84,7 @@ The execution interval delay.
 
 The execution interval delay when failsafe mode is enabled.
 
-The failsafe mode is enabled after any loader operation failure. The loader execution will use a shorter execution
-interval to recover quickly with valid refreshed data. The failsafe mode will be disabled when all loader operations
+The failsafe mode is enabled after any loader failure. The next execution will use a shorter time interval to recover quickly with valid refreshed data. The failsafe mode will be disabled when all loader operations
 have been succeeded.
 
 ### `execWorkers` {#execWorkers}
@@ -134,25 +133,10 @@ This interval is the period of time between each batch of [`execMaxOps`](#execMa
     Default:        -
 ```
 
-This list defines all the rules used to load resources.
-
-**Example:**
+This list defines all the loading rules.
 
 ```yaml
 rules:
-  - name: first
-    type: static
-    static:
-      resource: item-a
-```
-
-```yaml
-rules:
-  rule1:
-    raw:
-      resource:
-        first:
-          api:
-            method: GET
-            url: https://api/resource/first
+  <name>:
+    <parser_module>:
 ```

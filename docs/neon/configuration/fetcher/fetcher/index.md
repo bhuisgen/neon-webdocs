@@ -8,7 +8,7 @@ The `fetcher` section contains all the configuration settings of the [fetcher](/
 
 :::info
 
-This section is not required to start an instance.
+This section is not required to start the server instance.
 
 :::
 
@@ -25,13 +25,16 @@ fetcher:
       rest:
         headers:
           Content-Type: application/json
-          Authorization: "Bearer: auth_token1"
+          Authorization: "Bearer: <token1>"
     api2:
       rest:
         headers:
           Content-Type: application/json
-          Authorization: "Bearer: auth_token2"
+          Authorization: "Bearer: <token2>"
 ```
+
+- Two providers are defined: **api1** and **api2** both using the `rest` module.
+- Each provider defines its own authorization header.
 
 ## Directives
 
@@ -47,17 +50,11 @@ fetcher:
 
 The providers map.
 
-Each key is a user defined provider name and its values is the provider module to use.
-
-**Example:**
+Each key is a user-defined provider name and the associated value a provider module to use.
 
 ```yaml
 providers:
-  # provider name
-  api:
-    # provider module
-    rest:
-      # provider configuration
-      headers:
-        Content-Type: application/json
+  <name>:
+    <module>:
+      # config
 ```

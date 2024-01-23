@@ -18,14 +18,20 @@ store:
     memory:
 ```
 
-- The store uses the storage module `memory` to store its state.
-
 ## Directives
 
 ### `storage` {#storage}
 
+```
     Syntax:         storage:
     Type:           object
     Default:        memory
+```
 
 This object defines the storage module of the store.
+
+```yaml
+storage:
+  <module>:
+    # config
+```

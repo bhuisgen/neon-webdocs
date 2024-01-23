@@ -6,7 +6,7 @@ displayed_sidebar: docsSidebar
 
 Download the sources from the git repository:
 
-```
+```shell
 $ git clone https://github.com/bhuisgen/neon-oss
 ```
 

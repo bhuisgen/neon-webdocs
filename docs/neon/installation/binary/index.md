@@ -60,11 +60,3 @@ $ chmod +x /usr/local/bin/neon
 </TabItem>
 
 </Tabs>
-
-Verify that your installation is ready using the following command:
-
-```shell
-$ neon --version
-```
-
-It should output the `neon` binary version.

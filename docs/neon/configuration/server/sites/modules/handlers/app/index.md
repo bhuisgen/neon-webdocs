@@ -20,7 +20,6 @@ The `app` handler allows to serve a Javascript application composed of its HTML 
   - [`cache`](#cache)
   - [`cacheTTL`](#cacheTTL)
   - [`cacheMaxItems`](#cacheMaxItems)
-  - [`cacheMaxSize`](#cacheMaxSize)
   - [`cacheMinBodySize`](#cacheMinBodySize)
   - [`cacheMaxBodySize`](#cacheMaxBodySize)
   - [`languages`](#languages)
@@ -77,7 +76,7 @@ sites:
 - If the resource `config` has available data, the application can access it from the key `config` of the server
   state object.
 - As the `last` flag is not enabled, rules processing will continue to the next rules. This rule is useful way to
-  share common state to all requests.
+  share a common state to all requests.
 
 **Second rule**
 
@@ -86,7 +85,7 @@ sites:
 - If the resource `post-recent` has available data, the application can access it from the key `posts` of the server
   state object.
 - As the `last` flag is enabled, rules processing will stop if this rule matches, meaning no more state will be added
-  for the application.
+  for this request path.
 
 **Third rule**
 
@@ -286,7 +285,7 @@ When this limit is reached, the least resource used is evicted, meaning only the
 
 :::warning
 
-This option limits the memory usage of the instance.
+This option limits the memory usage of the server instance.
 
 :::
 
@@ -299,7 +298,7 @@ This option limits the memory usage of the instance.
     Unit:           bytes
 ```
 
-The minimum body size of the render.
+The minimum body size of the render to allow caching.
 
 :::note neon-pro
 
@@ -316,7 +315,7 @@ This feature is only available in Neon Pro.
     Unit:           bytes
 ```
 
-The maximum body size of the render.
+The maximum body size of the render to allow caching.
 
 :::note neon-pro
 

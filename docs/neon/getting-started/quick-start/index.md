@@ -23,7 +23,7 @@ Extract the downloaded archive to get the `neon` binary:
 <TabItem value="linux" label="Linux" default>
 
 ```shell
-$ tar -xvzf neon_linux_amd64.tar.gz
+$ tar -xvzf neon-oss_linux.tar.gz
 ```
 
 </TabItem>
@@ -31,7 +31,7 @@ $ tar -xvzf neon_linux_amd64.tar.gz
 <TabItem value="darwin" label="macOS">
 
 ```shell
-$ tar -xvzf neon_darwin_amd64.tar.gz
+$ tar -xvzf neon-oss_darwin.tar.gz
 ```
 
 </TabItem>
@@ -66,7 +66,7 @@ $ chmod +x /usr/local/bin/neon
 Verify that your installation is ready using the following command:
 
 ```shell
-$ neon --version
+$ neon -v
 ```
 
 It should output the `neon` binary version.
@@ -78,11 +78,10 @@ For this quick start, we will serve a default application already packaged into 
 First initialize your instance:
 
 ```shell
-$ neon init
+$ neon init -template status
 ```
 
-A default configuration file `neon.yaml` and a `data` directory should have been generated into your current directory.
-The `data` directory contains the HTML file, the bundle files and all static resources required by the status app.
+A default configuration file `neon.yaml` and a `data` directory should have been generated into your current directory. The `data` directory contains the HTML file, the bundle file and all static resources of the application.
 
 Start your instance:
 
@@ -93,6 +92,8 @@ $ neon serve
 Neon should be running on your local port 8080. Open your browser and go to this address:
 
 - [http://localhost:8080](http://localhost:8080)
+
+The status app will showing up.
 
 Quick start completed!
 

@@ -4,7 +4,7 @@ toc_max_heading_level: 2
 
 # Listener
 
-A listener is the configuration block required to create a network socket listening for incoming client connections.
+A **listener** is a network socket listening for incoming client connections.
 
 - [Example configuration](#example-configuration)
 - [Directives](#directives)
@@ -27,7 +27,7 @@ listeners:
       listenPort: 80
 ```
 
-- Two listeners are defined: the first listener is named _secured_ and the second _unsecured_.
+- Two listeners are defined: the first listener is named **secured** and the second **unsecured**.
 - The first listener uses the module `tls` and the second `redirect`.
 
 ## Directives
@@ -41,12 +41,18 @@ listeners:
     Item value:     object
 ```
 
-This list defines all listeners.
+This map defines all listeners.
 
-Each listener has a user-defined name and a listener module configuration.
+Each listener has a user-defined name and a listener module configuration:
+
+```yaml
+<name>:
+  <module>:
+    # config
+```
 
 :::warning
 
-At least one listener is required to start an instance.
+At least one listener is required to start the server instance.
 
 :::

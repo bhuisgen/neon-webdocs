@@ -1,35 +1,32 @@
 ---
 displayed_sidebar: docsSidebar
-hide_table_of_contents: true
 ---
 
 # Hugo
 
-Serving a Hugo blog is easy as no server features are required.
+Serving a [Hugo](https://gohugo.io/) website is easy as no server state is required.
+
+The files are served by the `static` middleware - including the index page - and the 404 error page by the `file` handler.
 
 ## Build
 
-Build your hugo to generate the `public/` directory:
+Build your website to generate the `public/` directory:
 
-    $ hugo
+```shell
+$ hugo
+```
 
-## Configuration
+## Configure
 
-```yaml
+```yaml title="neon.yaml"
 server:
   listeners:
     default:
-      tls:
+      local:
         listenAddr: 0.0.0.0
-        listenPort: 443
-        caFiles:
-          - ca.pem
-        certFiles:
-          - cert.pem
-        keyFiles:
-          - key.pem
+        listenPort: 8080
   sites:
-    default:
+    hugo:
       listeners:
         - default
       routes:
@@ -47,4 +44,16 @@ server:
               statusCode: 404
               cache: true
               cacheTTL: 3600
+```
+
+## Check the configuration
+
+```shell
+$ neon check
+```
+
+## Run the instance
+
+```shell
+$ neon serve
 ```

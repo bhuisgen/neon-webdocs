@@ -1,32 +1,172 @@
 ---
 displayed_sidebar: docsSidebar
-hide_table_of_contents: true
 ---
 
 # React
 
-Serving a React application have some prerequisites to support Neon features like full rendering and server state.
+Serving a [React](https://react.dev/) application have some requisites to support the server state and the full rendering:
 
-Here are the requisites:
+- A bundle file must be built for the server.
+- The server bundle must not use any browser APIs.
+- The client bundle should rehydrate from the server response.
+- The client bundle must render initially the same content as the server version to not force a new render (hydration) in the client browser.
+- The HTML index must include the script tag to the client bundle, not the server bundle.
 
-- Your application must be ready for server-side execution
-- A specific server bundle of your application must be build with a tool like `esbuild`.
-- Both the server and the client bundle must be used: the server bundle is executed by the `app` handler and the
-  client bundle is served to clients by the `static` middleware.
-- Verify that the server bundle doesn't execute any browser APIs as the server VM is only able to execute vanilla JS. In
-  practice, any code parts requiring browser APIs/objects must be removed.
-- The index HTML must include the script tag of the client bundle and it should match to the vallue of option
-  `container`.
+For the server configuration, the `app` handler will execute the server bundle and serve the hydrated HTML content to clients. The `static` middleware delivers the static assets including the client bundle.
 
 :::tip
 
-Serving a React client rendered application is still possible like any alternate web servers.
+Serving a client-only application is still possible with the `static` middleware.
 
 :::
 
 ## Build
 
-TODO
+### Client
+
+Build the client:
+
+```shell
+$ npm run build
+```
+
+Check the generated files:
+
+```shell
+$ tree dist
+```
+
+```shell
+dist
+├── client
+│   ├── assets
+│   │   ├── MyFont-c64f09f2.ttf
+│   │   ├── index-b298acb0.js
+│   │   ├── index-be009208.css
+│   │   └── vendor-5b47ab1a.js
+│   ├── favicon.svg
+│   ├── index.html
+│   └── logo.svg
+```
+
+### Server
+
+The server is built with [esbuild](https://esbuild.github.io/) and this script:
+
+```javascript title="build-server.js
+import * as esbuild from "esbuild";
+
+const generateServerBundle = async () => {
+  await esbuild.build({
+    entryPoints: ["src/server.tsx"],
+    inject: ["./src/server-shim.js"],
+    outfile: "./dist/server/bundle.js",
+    logLevel: "error",
+    bundle: true,
+    minify: true,
+    sourcemap: false,
+    loader: {
+      ".png": "dataurl",
+      ".svg": "dataurl",
+    },
+    external: ["*.ttf"],
+  });
+};
+
+generateServerBundle();
+```
+
+React requires some code to be executed successfully by the server VM:
+
+```javascript title="src/server-shim.js"
+/* eslint-disable no-undef */
+const { TextDecoder, TextEncoder } = require("text-encoding");
+globalThis.TextDecoder = TextDecoder;
+globalThis.TextEncoder = TextEncoder;
+
+/* eslint-disable no-undef */
+const { URL } = require("whatwg-url");
+globalThis.URL = URL;
+```
+
+Build the bundle:
+
+```shell
+$ node build-server.js
+```
+
+Check the generated files:
+
+```shell
+$ tree dist
+```
+
+```shell
+dist
+├── client
+│   ├── assets
+│   │   ├── MyFont-c64f09f2.ttf
+│   │   ├── index-b298acb0.js
+│   │   ├── index-be009208.css
+│   │   └── vendor-5b47ab1a.js
+│   ├── favicon.svg
+│   ├── index.html
+│   └── logo.svg
+└── server
+    ├── bundle.css
+    └── bundle.js
+```
+
+### Application
+
+The final application contains the client files and the server files:
+
+```shell
+$ mkdir dist/app
+$ cp -r dist/server/* dist/app/
+$ mkdir dist/app/static
+$ cp -r dist/client/* dist/app/static/
+```
+
+The client HTML index is only used by the instance:
+
+```shell
+$ mv dist/app/static/index.html dist/app/index.html
+```
+
+Check the final files:
+
+```shell
+$ tree dist
+```
+
+```shell
+dist
+├── client
+│   ├── assets
+│   │   ├── MyFont-c64f09f2.ttf
+│   │   ├── index-b298acb0.js
+│   │   ├── index-be009208.css
+│   │   └── vendor-5b47ab1a.js
+│   ├── favicon.svg
+│   ├── index.html
+│   ├── logo.svg
+└── server
+│   ├── bundle.css
+│   └── bundle.js
+└── app
+    ├── bundle.css
+    ├── bundle.js
+    ├── index.html
+    └── static
+        ├── assets
+        │   ├── MyFont-c64f09f2.ttf
+        │   ├── index-b298acb0.js
+        │   ├── index-be009208.css
+        │   └── vendor-5b47ab1a.js
+        ├── favicon.svg
+        └── logo.svg
+```
 
 ## Configuration
 
@@ -34,59 +174,37 @@ TODO
 server:
   listeners:
     default:
-      tls:
+      local:
         listenAddr: 0.0.0.0
-        listenPort: 443
-        caFile: ca.pem
-        certFile: cert.pem
-        keyFile: key.pem
+        listenPort: 8080
   sites:
-    default:
+    react:
       listeners:
         - default
       routes:
         default:
           middlewares:
             logger:
-
             compress:
               level: -1
-
             static:
-              path: public/
-              index: true
+              path: dist/app/static
           handler:
             app:
-              index: dist/index.html
-              bundle: dist/bundle.js
+              index: dist/app/index.html
+              bundle: dist/app/bundle.js
               cache: true
               cacheTTL: 3600
 ```
 
-## Improve
+## Check the configuration
 
-- Define the static resources for your static content
+```shell
+$ neon check
+```
 
-- Define the dynamic resources for your dynamic content
+## Run the instance
 
-- Define the resource loading rules
-
-- Define all the application routes
-
-- Test the application rendering
-
-- Add the robots handler to generate your robots.txt
-
-- Add the sitemap handler to generate your sitemap
-
-- Test the robots.txt and sitemap rendering
-
-- Improve the cache settings
-
-- Define the rendering rules to prerender your application
-
-- Test your application rendering performance with lighthouse
-
-- Test your application after server restart
-
-- Move to production!
+```shell
+$ neon serve
+```

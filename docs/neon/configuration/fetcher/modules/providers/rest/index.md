@@ -51,9 +51,9 @@ loader:
             limit: 10
 ```
 
-- The provider `api` is defined to use the provider module `rest`.
-- The loader rules defines a rule for the resource `my-resource` and this rule loads this resource using the provider
-  `api` with the given configuration.
+- The provider **api** is defined to use the provider module `rest`.
+- The loader rules defines a rule for the resource _\_\_my-resource_ and this rule loads this resource using the
+  provider **api** with the given configuration.
 
 ## Directives {#directives}
 
