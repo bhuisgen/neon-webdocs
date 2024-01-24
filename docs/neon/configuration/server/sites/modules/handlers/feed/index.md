@@ -104,7 +104,7 @@ sites:
 - The root URL of the website is `https://example.org`.
 - A RSS feed is generated for the route `/index.xml`.
 - The feed uses the resource `latest-posts` which returns all latest posts into its response payload items array `data`.
-- Each item/post from this payload items array is used to generate the feed items with the given informations.
+- Each item/post from this payload items array is used to generate the feed items with the given .
 
 ## Directives
 
@@ -403,7 +403,7 @@ skipHours:
     Syntax:         skipDays:
     Type:           list
     Item type:      string
-    Valid values:   Monday, Thuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+    Valid values:   Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
     Default:        -
 ```
 

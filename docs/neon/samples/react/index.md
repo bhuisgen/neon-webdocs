@@ -178,7 +178,7 @@ server:
         listenAddr: 0.0.0.0
         listenPort: 8080
   sites:
-    react:
+    main:
       listeners:
         - default
       routes:

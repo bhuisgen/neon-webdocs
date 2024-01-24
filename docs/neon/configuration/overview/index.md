@@ -14,7 +14,7 @@ By default, the configuration file must be located in the current working direct
 
 :::tip
 
-You can specity a different configuration file by setting the environment variable [`CONFIG_FILE`](#config_file).
+You can specify a different configuration file by setting the environment variable [`CONFIG_FILE`](#config_file).
 
 :::
 
@@ -32,7 +32,7 @@ its own name. An option can have one value (single value) or multiple values (mu
 
 ## Environment variables
 
-You can override some configuration settings through the use of environment variables:
+You can override some configuration settings with environment variables.
 
 ### `CONFIG_FILE`
 

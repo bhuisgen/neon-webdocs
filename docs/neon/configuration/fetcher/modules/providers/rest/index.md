@@ -45,14 +45,16 @@ loader:
     my-resource:
       raw:
         api:
+          # highlight-start
           method: GET
           url: https://backend/v1/my-resource
           params:
             limit: 10
+          # highlight-end
 ```
 
 - The provider **api** is defined to use the provider module `rest`.
-- The loader rules defines a rule for the resource _\_\_my-resource_ and this rule loads this resource using the
+- The loader rules defines a rule for the resource _my-resource_ and this rule loads this resource using the
   provider **api** with the given configuration.
 
 ## Directives {#directives}
@@ -246,7 +248,7 @@ The resource request method.
 
 The resource request URL.
 
-#### `headers` {#resoure-headers}
+#### `headers` {#resource-headers}
 
 ```
     Syntax:         headers:

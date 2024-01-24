@@ -21,20 +21,12 @@ This section is not required to start the server instance.
 ```yaml
 fetcher:
   providers:
-    api1:
+    api:
       rest:
         headers:
           Content-Type: application/json
-          Authorization: "Bearer: <token1>"
-    api2:
-      rest:
-        headers:
-          Content-Type: application/json
-          Authorization: "Bearer: <token2>"
+          Authorization: "Bearer: <token>"
 ```
-
-- Two providers are defined: **api1** and **api2** both using the `rest` module.
-- Each provider defines its own authorization header.
 
 ## Directives
 
@@ -52,9 +44,14 @@ The providers map.
 
 Each key is a user-defined provider name and the associated value a provider module to use.
 
+**Example:**
+
 ```yaml
 providers:
-  <name>:
-    <module>:
-      # config
+  api1:
+    rest:
+      # provider configuration
+  api2:
+    rest:
+      # provider configuration
 ```

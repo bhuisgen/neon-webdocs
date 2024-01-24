@@ -446,7 +446,7 @@ Dynamic parameters extracted from the rule [`path`](#rule-path) are replaced.
 
 :::info
 
-Please refer to the [`loader`](/neon/configuration/loader/overview/) page for more informations about resources.
+Please refer to the [`loader`](/neon/configuration/loader/overview/) page for more information about resources.
 
 :::
 

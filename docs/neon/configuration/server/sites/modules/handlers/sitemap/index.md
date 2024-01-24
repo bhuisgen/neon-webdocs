@@ -66,7 +66,7 @@ sites:
 - The first sitemap item is for the homepage `home` using a `static` type item with the relative location `/`.
 - The next items are for the posts `all-posts` using a `list` type item.
 - This `list` item uses the resource `posts` which returns all posts into its response payload items array `data`.
-- Each item/post from this payload items array is used to generate a sitemap item with the given informations.
+- Each item/post from this payload items array is used to generate a sitemap item with the given .
 
 ## Directives
 
@@ -365,7 +365,7 @@ This flag allows to omit an item from the sitemap.
     Default:        -
 ```
 
-The change frequence of each item.
+The change frequency of each item.
 
 #### `priority` {#route-sitemap-list-priority}
 

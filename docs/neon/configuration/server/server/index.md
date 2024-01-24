@@ -43,16 +43,50 @@ server:
 
 ### `listeners` {#listeners}
 
+```
     Syntax:         listeners:
-    Type:           list
-    Item type:      object
+    Type:           map
+    Map key:        string
+    Map value:      object
+```
 
 This list defines the server listeners.
 
+:::warning
+
+At least one listener is required to start the server instance.
+
+:::
+
+**Example:**
+
+```yaml
+listeners:
+  default:
+    local:
+      # listener configuration
+```
+
 ### `sites` {#sites}
 
+```
     Syntax:         sites:
     Type:           list
     Item type:      object
+```
 
 This list defines the server sites.
+
+:::warning
+
+At least one site is required to start the server instance.
+
+:::
+
+**Example:**
+
+```yaml
+sites:
+  main:
+    # site configuration
+```

@@ -26,6 +26,8 @@ Run 'neon COMMAND --help' for more information on a command.
 
 ## Command help
 
-To show the help available for a specific command, run the command with `help`:
+To show the help available, run the command with the `help` option:
 
-    $ neon -v
+```shell
+    $ neon init --help
+```

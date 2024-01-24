@@ -37,7 +37,7 @@ $ tar -xvzf neon_darwin_amd64.tar.gz
 
 ## Installing
 
-Copy the binary where you want like your project directory or your `PATH` but make sure that the file has the execute permission.
+Copy the binary where you want like in your project directory or your `PATH` but make sure that the file has the execute permission.
 
 <Tabs groupId="os">
 

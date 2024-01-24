@@ -50,10 +50,7 @@ loader:
 
 - The provider **api** is defined to use the `rest` provider which fetches a remote JSON API.
 - The loader has the rule **load-posts** which executes the parser `json`.
-- The parser `json` triggers the provider **api\_ to fetch the resource **posts\* and parses its response to extract the
-  items list following the JSON path `filter`. For each item, the attribute **name** and **url** are extracted
-  given their respective JSON path in `itemParams`. Each parameter will be available as a dynamic parameter to the item
-  resource **post-$name**. Finally, each item resources are fetched and stored/refreshed in the server state.
+- The parser `json` triggers the provider **api** to fetch the resource **posts** and parses its response to extract the items list following the JSON path `filter`. For each item, the attribute **name** and **url** are extracted given their respective JSON path in `itemParams`. Each parameter will be available as a dynamic parameter to the item resource **post-$name**. Finally, each item resources are fetched and stored/refreshed in the server state.
 
 ## Directives
 
@@ -67,11 +64,13 @@ loader:
 
 The resource to load.
 
+**Example:**
+
 ```yaml
 resource:
-  <name>:
-    <provider>:
-      # config
+  posts:
+    api:
+      # resource configuration
 ```
 
 ### `filter` {#filter}

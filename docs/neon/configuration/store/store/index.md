@@ -30,8 +30,10 @@ store:
 
 This object defines the storage module of the store.
 
+**Example:**
+
 ```yaml
 storage:
-  <module>:
-    # config
+  memory:
+    # storage configuration
 ```

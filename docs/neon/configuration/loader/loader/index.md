@@ -47,7 +47,7 @@ loader:
 
 - The loader is executed `15` seconds after the instance startup and then every `900` seconds.
 - For each pass all rules are evaluated and execute the parser module `raw`.
-- The `raw` perser triggers the provider **api** to fetch the resources and store/refresh them into the server state.
+- The `raw` parser triggers the provider **api** to fetch the resources and store/refresh them into the server state.
 
 ## Directives
 
@@ -128,15 +128,19 @@ This interval is the period of time between each batch of [`execMaxOps`](#execMa
 
 ```
     Syntax:         rules:
-    Type:           list
-    Item type:      object
+    Type:           map
+    Map key:        string
+    Map value:      object
     Default:        -
 ```
 
 This list defines all the loading rules.
 
+**Example:**
+
 ```yaml
 rules:
-  <name>:
-    <parser_module>:
+  posts-list:
+    json:
+      # parser configuration
 ```

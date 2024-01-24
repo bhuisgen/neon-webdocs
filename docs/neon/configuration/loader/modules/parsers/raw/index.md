@@ -26,7 +26,7 @@ loader:
       raw:
         resource:
           post1:
-            default:
+            api:
               method: GET
               url: https://backend/posts/1
       # highlight-end
@@ -48,9 +48,11 @@ loader:
 
 The resource to load.
 
+**Example:**
+
 ```yaml
 resource:
-  <name>:
-    <provider>:
-      # config
+  posts:
+    api:
+      # resource configuration
 ```

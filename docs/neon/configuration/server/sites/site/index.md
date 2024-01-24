@@ -59,7 +59,30 @@ server:
     Type:           list
     Item type:      string
 
-This list defines the listeners to attach the site.
+This list defines the listeners used by the site.
+
+:::warning
+
+At least one listener is required.
+
+:::
+
+### `hosts` {#hosts}
+
+    Syntax:         hosts:
+    Type:           list
+    Item type:      string
+    Default:        -
+
+This list defines the hosts used by the site.
+
+Omitting this option marks the current site as the default site of the instance.
+
+:::warning
+
+Only one site is allowed to be defined as default. Non-default sites must have this option defined.
+
+:::
 
 ### `routes` {#routes}
 
@@ -72,6 +95,8 @@ This list defines the listeners to attach the site.
 ```
 
 This map defines each site routes as a pair route name / configuration:
+
+**Example:**
 
 ```yaml
 routes:
@@ -115,10 +140,9 @@ The regular routes have these naming conventions:
 
 :::warning
 
-- Regular expressions or glob patterns are not supported for routes names.
-- The regular route **/** is used to override the inherited configuration from the internal route `default`. But if no
-  other regular route exists, the regular route **/** precedes the `default` internal route.
-  :::
+The regular route **/** is used to override the inherited configuration from the internal route `default`. If no other regular route exists, the regular route **/** precedes the `default` internal route.
+
+:::
 
 :::tip
 
@@ -142,17 +166,18 @@ Keep your routing configuration ordered like this:
 
 This map defines the middlewares of the given route.
 
-Each middleware will be executed one after the other composing _the middlewares chain_. The middlewares chain of the
-default route is commonly called _the default middlewares chain_.
+Each middleware will be executed one after the other composing _the middlewares chain_. The middlewares chain of the default route is commonly called _the default middlewares chain_.
+
+**Example:**
 
 ```yaml
 routes:
   "/path":
     middlewares:
       middleware1:
-        # config
+        # middleware configuration
       middleware2:
-        # config
+        # middleware configuration
 ```
 
 :::warning
@@ -173,17 +198,25 @@ This object defines the handler of the given route.
 
 The handler will be executed after the middlewares chain.
 
+**Example:**
+
 ```yaml
 routes:
+  default:
+    middlewares:
+      # default middlewares chain
+    handler:
+      # default handler
+
   "/path":
     middlewares:
       middleware1:
-        # config
+        # middleware configuration
       middleware2:
-        # config
+        # middleware configuration
     handler:
       handler1:
-        # config
+        # handler configuration
 ```
 
 :::warning
