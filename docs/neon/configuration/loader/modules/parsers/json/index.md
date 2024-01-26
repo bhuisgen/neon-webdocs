@@ -32,7 +32,7 @@ loader:
           posts:
             api:
               method: GET
-              url: https://backend/api/posts
+              url: https://<backend_url>/api/v1/posts
               next: true
               nextParser: body
               nextFilter: $.next

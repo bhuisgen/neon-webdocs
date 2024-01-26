@@ -14,6 +14,7 @@ The `app` handler allows to serve a Javascript application composed of its HTML 
   - [`env`](#env)
   - [`container`](#container)
   - [`state`](#state)
+  - [`timeout`](#timeout)
   - [`maxVMs`](#maxVMs)
   - [`minSpareVMs`](#minSpareVMs)
   - [`maxSpareVMs`](#maxSpareVMs)
@@ -198,8 +199,8 @@ The value should match to your application.
 ```
     Syntax:         timeout: <duration>
     Type:           numeric
-    Default:        15
-    Unit:           seconds
+    Default:        200
+    Unit:           milliseconds
 ```
 
 The timeout to execute the bundle.

@@ -35,14 +35,14 @@ loader:
           first:
             api:
               method: GET
-              url: https://backend/api/v1/resource/1
+              url: https://<backend_url>/api/v1/resource/1
     load-resource2:
       raw:
         resource:
           second:
             api:
               method: GET
-              url: https://backend/api/v1/resource/2
+              url: https://<backend_url>/api/v1/resource/2
 ```
 
 - The loader is executed `15` seconds after the instance startup and then every `900` seconds.

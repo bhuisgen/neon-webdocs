@@ -47,7 +47,7 @@ loader:
         api:
           # highlight-start
           method: GET
-          url: https://backend/v1/my-resource
+          url: https://<backend_url>/api/v1/my-resource
           params:
             limit: 10
           # highlight-end

@@ -28,7 +28,7 @@ loader:
           post1:
             api:
               method: GET
-              url: https://backend/posts/1
+              url: https://<backend_url>/api/v1/posts/1
       # highlight-end
 ```
 
