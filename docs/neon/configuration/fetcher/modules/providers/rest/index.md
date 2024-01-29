@@ -27,7 +27,7 @@ The `rest` provider is used to fetch REST API resources.
   - [`headers`](#resource-headers)
   - [`params`](#resource-params)
 
-## Example configuration
+## Example configuration {#example-configuration}
 
 ```yaml
 fetcher:
@@ -53,9 +53,8 @@ loader:
           # highlight-end
 ```
 
-- The provider **api** is defined to use the provider module `rest`.
-- The loader rules defines a rule for the resource _my-resource_ and this rule loads this resource using the
-  provider **api** with the given configuration.
+- The provider **api** uses the provider module `rest`.
+- The loader rules has a rule for the resource _my-resource_ which loads this resource using the provider **api** with the given configuration.
 
 ## Directives {#directives}
 
@@ -225,7 +224,7 @@ params:
   param2: value2
 ```
 
-## Resource configuration {#resource-config}
+## Resource configuration {#resource-configuration}
 
 #### `method` {#resource-method}
 
@@ -236,7 +235,7 @@ params:
     Default:        -
 ```
 
-The resource request method.
+The request method.
 
 #### `url` {#resource-url}
 
@@ -246,7 +245,7 @@ The resource request method.
     Default:        -
 ```
 
-The resource request URL.
+The request URL.
 
 #### `headers` {#resource-headers}
 
@@ -258,7 +257,7 @@ The resource request URL.
     Default:        -
 ```
 
-The headers of the resource request.
+The headers of the request.
 
 **Example:**
 
@@ -278,7 +277,7 @@ headers:
     Default:        -
 ```
 
-The parameters of the resource request.
+The parameters of the request.
 
 **Example:**
 

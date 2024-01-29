@@ -22,7 +22,7 @@ This listener requires a public facing server with its HTTP network port 80 avai
 - [Example configuration](#example-configuration)
 - [Directives](#directives)
   - [`domains`](#domains)
-  - [`cacheDir`](#cache-dir)
+  - [`cacheDir`](#cacheDir)
   - [`listenAddr`](#listenAddr)
   - [`listenPort`](#listenPort)
   - [`readTimeout`](#readTimeout)

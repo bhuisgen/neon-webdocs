@@ -8,9 +8,9 @@ The `compress` middleware allows to compress the content of outgoing responses t
 
 - [Example configuration](#example-configuration)
 - [Directives](#directives)
-  - [`compress`](#compress)
+  - [`level`](#level)
 
-## Example configuration
+## Example configuration {#example-configuration}
 
 ```yaml
 sites:
@@ -24,7 +24,7 @@ sites:
           # highlight-end
 ```
 
-## Directives
+## Directives {#directives}
 
 ### `level` {#level}
 

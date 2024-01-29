@@ -32,7 +32,7 @@ loader:
       # highlight-end
 ```
 
-- The provider **api** is defined to use the `rest` provider which fetches a remote JSON API.
+- The provider **api** uses the `rest` provider which fetches a remote JSON API.
 - The loader has the rule **load-post1** which executes the parser `raw`.
 - The parser `raw` triggers the provider **api** to fetch the resource **post1** and to store/refresh the server state.
 

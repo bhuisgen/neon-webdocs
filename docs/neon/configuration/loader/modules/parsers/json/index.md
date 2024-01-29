@@ -48,7 +48,7 @@ loader:
       # highlight-end
 ```
 
-- The provider **api** is defined to use the `rest` provider which fetches a remote JSON API.
+- The provider **api** uses the `rest` provider which fetches a remote JSON API.
 - The loader has the rule **load-posts** which executes the parser `json`.
 - The parser `json` triggers the provider **api** to fetch the resource **posts** and parses its response to extract the items list following the JSON path `filter`. For each item, the attribute **name** and **url** are extracted given their respective JSON path in `itemParams`. Each parameter will be available as a dynamic parameter to the item resource **post-$name**. Finally, each item resources are fetched and stored/refreshed in the server state.
 
@@ -93,7 +93,7 @@ The JSON path to filter to extract the resource items list.
     Default:        -
 ```
 
-The map defining the attributes extract of each result item.
+The map defines the attributes to extract of each result item.
 
 The value of each entry is a JSON path to extract the given attribute.
 

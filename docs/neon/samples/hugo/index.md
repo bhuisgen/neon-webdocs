@@ -6,7 +6,7 @@ displayed_sidebar: docsSidebar
 
 Serving a [Hugo](https://gohugo.io/) website is easy as no server state is required.
 
-The files are served by the `static` middleware - including the index page - and the 404 error page by the `file` handler.
+The files are served by the [`static`](/neon/configuration/server/sites/modules/middlewares/static/) middleware - including the index page - and the 404 error page by the [`file`](/neon/configuration/server/sites/modules/handlers/file) handler.
 
 ## Build
 
@@ -18,7 +18,7 @@ $ hugo
 
 ## Configure
 
-```yaml title="neon.yaml"
+```yaml title="neon.yaml" showLineNumbers
 server:
   listeners:
     default:

@@ -32,22 +32,22 @@ loader:
     load-resource1:
       raw:
         resource:
-          first:
+          resource1:
             api:
               method: GET
               url: https://<backend_url>/api/v1/resource/1
     load-resource2:
       raw:
         resource:
-          second:
+          resource2:
             api:
               method: GET
               url: https://<backend_url>/api/v1/resource/2
 ```
 
-- The loader is executed `15` seconds after the instance startup and then every `900` seconds.
-- For each pass all rules are evaluated and execute the parser module `raw`.
-- The `raw` parser triggers the provider **api** to fetch the resources and store/refresh them into the server state.
+- The loader is executed 15 seconds after the instance startup and then every 900 seconds.
+- Each execution will process all defined rules.
+- Both rules **load-resource1** and **load-resource2** use the `raw` parser which triggers the provider **api** to fetch the resources **resource1** and **resource2** and to store/refresh them into the server state.
 
 ## Directives
 
@@ -58,6 +58,7 @@ loader:
     Type:           numeric
     Unit:           second
     Default:        15
+    Minimum:        1
 ```
 
 The execution startup delay.
@@ -69,6 +70,7 @@ The execution startup delay.
     Type:           numeric
     Unit:           second
     Default:        900
+    Minimum:        1
 ```
 
 The execution interval delay.
@@ -80,12 +82,24 @@ The execution interval delay.
     Type:           numeric
     Unit:           second
     Default:        300
+    Minimum:        0 (disabled)
 ```
 
 The execution interval delay when failsafe mode is enabled.
 
-The failsafe mode is enabled after any loader failure. The next execution will use a shorter time interval to recover quickly with valid refreshed data. The failsafe mode will be disabled when all loader operations
-have been succeeded.
+The failsafe mode is enabled when at least one rule has failed during the last execution. The next execution will use this shorter interval time to execute and to try to recover quickly. The failsafe mode is disabled next to a succeeded execution of all rules.
+
+:::warning
+
+The interval must be lesser than [`execInterval`](#execInterval).
+
+:::
+
+:::tip
+
+To disable the failsafe mode, sets the value to 0.
+
+:::
 
 ### `execWorkers` {#execWorkers}
 
@@ -94,6 +108,7 @@ have been succeeded.
     Type:           numeric
     Unit:           -
     Default:        1
+    Minimum:        1
 ```
 
 The number of execution workers.
@@ -105,24 +120,38 @@ The number of execution workers.
     Type:           numeric
     Unit:           -
     Default:        100
+    Minimum:        0 (disabled)
 ```
 
 The maximum number of operations per execution before delaying.
 
-This setting prevents any excessive CPU usage of the instance as well as any backend services.
+This setting prevents any excessive CPU usage of the instance as well as to any backend services.
+
+:::tip
+
+To disable this limit, sets the value to 0.
+
+:::
 
 ### `execMaxDelay` {#execMaxDelay}
 
 ```
     Syntax:         execMaxDelay: <count>
     Type:           numeric
-    Unit:           -
+    Unit:           op
     Default:        60
+    Minimum:        0 (disabled)
 ```
 
 The interval delay in seconds between each delayed execution.
 
 This interval is the period of time between each batch of [`execMaxOps`](#execMaxOps) operations.
+
+:::tip
+
+To disable this limit, sets the value to 0.
+
+:::
 
 ### `rules` {#rules}
 
@@ -134,7 +163,7 @@ This interval is the period of time between each batch of [`execMaxOps`](#execMa
     Default:        -
 ```
 
-This list defines all the loading rules.
+This map defines all the loading rules.
 
 **Example:**
 

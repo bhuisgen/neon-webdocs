@@ -18,6 +18,8 @@ A **site** is a website hosted by the server instance.
 
 ```yaml
 server:
+  listeners:
+    # listeners configuration
   sites:
     main:
       listeners:
@@ -47,19 +49,21 @@ server:
               bundle: dist/admin/bundle.js
 ```
 
-- Two sites are defined using the same network listener `default`.
-- The first site `main` is used by default as no host is specified.
-- The second site `admin` defines a host to limit its access to the only host `admin.example.org`.
+- Two sites are using the same network listener `default`.
+- The first site **main** is used by default as the `hosts` option is missing.
+- The second site **admin** defines a host to limit its access to the only host `admin.example.org`.
 
 ## Directives
 
 ### `listeners` {#listeners}
 
+```
     Syntax:         listeners:
     Type:           list
     Item type:      string
+```
 
-This list defines the listeners used by the site.
+This list defines the listeners mapped to the site.
 
 :::warning
 
@@ -69,18 +73,20 @@ At least one listener is required.
 
 ### `hosts` {#hosts}
 
+```
     Syntax:         hosts:
     Type:           list
     Item type:      string
     Default:        -
+```
 
-This list defines the hosts used by the site.
+This list defines the hosts mapped to the site.
 
-Omitting this option marks the current site as the default site of the instance.
+Omitting this option defines the site as the default site of the server. The default site will be used for handling requests when their host don't match any other site.
 
 :::warning
 
-Only one site is allowed to be defined as default. Non-default sites must have this option defined.
+Only one default site is allowed. Other sites must have this option defined.
 
 :::
 
@@ -94,7 +100,7 @@ Only one site is allowed to be defined as default. Non-default sites must have t
     Default:        -
 ```
 
-This map defines each site routes as a pair route name / configuration:
+This map defines each site routes.
 
 **Example:**
 

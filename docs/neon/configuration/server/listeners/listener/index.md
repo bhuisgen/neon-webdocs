@@ -7,25 +7,26 @@ toc_max_heading_level: 2
 A **listener** is a network socket listening for incoming client connections.
 
 - [Example configuration](#example-configuration)
-- [Directives](#directives)
-  - [`listeners`](#listeners)
 
-## Example configuration
+## Example configuration {#example-configuration}
 
 ```yaml
-listeners:
-  secured:
-    tls:
-      listenAddr: 0.0.0.0
-      listenPort: 443
-      caFiles: ["ca.pem"]
-      certFiles: ["cert.pem"]
-      keyFiles: ["key.pem"]
-  unsecured:
-    redirect:
-      listenAddr: 0.0.0.0
-      listenPort: 80
+server:
+  listeners:
+    secured:
+      tls:
+        listenAddr: 0.0.0.0
+        listenPort: 443
+        caFiles: ["ca.pem"]
+        certFiles: ["cert.pem"]
+        keyFiles: ["key.pem"]
+    unsecured:
+      redirect:
+        listenAddr: 0.0.0.0
+        listenPort: 80
+  sites:
+    # sites configuration
 ```
 
-- Two listeners are defined: the first listener is named **secured** and the second **unsecured**.
-- The first listener uses the module `tls` and the second `redirect`.
+- The first listener **secured** uses the module `tls`.
+- The second listener **unsecured** use the module `redirect`.

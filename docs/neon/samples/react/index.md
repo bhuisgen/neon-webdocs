@@ -12,11 +12,11 @@ Serving a [React](https://react.dev/) application have some requisites to suppor
 - The client bundle must render initially the same content as the server version to not force a new render (hydration) in the client browser.
 - The HTML index must include the script tag to the client bundle, not the server bundle.
 
-For the server configuration, the `app` handler will execute the server bundle and serve the hydrated HTML content to clients. The `static` middleware delivers the static assets including the client bundle.
+For the server configuration, the [`app`](/neon/configuration/server/sites/modules/handlers/app/) handler will execute the server bundle and serve the hydrated HTML content to clients. The [`static`](/neon/configuration/server/sites/modules/middlewares/static) middleware serves the static assets including the client bundle.
 
 :::tip
 
-Serving a client-only application is still possible with the `static` middleware.
+Serving a client-only application is still possible with the [`static`](/neon/configuration/server/sites/modules/middlewares/static/) middleware only.
 
 :::
 
@@ -53,7 +53,7 @@ dist
 
 The server is built with [esbuild](https://esbuild.github.io/) and this script:
 
-```javascript title="build-server.js
+```javascript title="build-server.js showLineNumbers
 import * as esbuild from "esbuild";
 
 const generateServerBundle = async () => {
@@ -78,7 +78,7 @@ generateServerBundle();
 
 React requires some code to be executed successfully by the server VM:
 
-```javascript title="src/server-shim.js"
+```javascript title="src/server-shim.js" showLineNumbers
 /* eslint-disable no-undef */
 const { TextDecoder, TextEncoder } = require("text-encoding");
 globalThis.TextDecoder = TextDecoder;
@@ -170,7 +170,7 @@ dist
 
 ## Configuration
 
-```yaml title="neon.yaml"
+```yaml title="neon.yaml" showLineNumbers
 server:
   listeners:
     default:

@@ -26,7 +26,7 @@ server:
       listeners:
         - default
       routes:
-        default:
+        main:
           middlewares:
             static:
               path: dist/app/static
@@ -36,8 +36,8 @@ server:
               bundle: dist/app/bundle.js
 ```
 
-- One listener `default` is defined.
-- One site `default`is defined and is using the previous listener.
+- The listener **default** is defined.
+- The site **main** uses this listener.
 
 ## Directives
 

@@ -42,10 +42,12 @@ const root = `
 server.response.render(root, 200);
 
 server.response.setTitle("My Application");
-server.response.setLink("canonical", {
-  rel: "canonical",
-  href: `http://localhost${server.requestPath()}`,
-});
+server.response.setLink("canonical",
+ new Map([
+    ["rel": "canonical"],
+    ["href": `https://${$server.request.host()}/{server.request.requestPath()}`],
+  ])
+);
 server.response.setMeta(
   "description",
   new Map([

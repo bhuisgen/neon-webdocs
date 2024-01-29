@@ -57,9 +57,12 @@ By default the console is used as log output.
     Type:           numeric
     Unit:           bytes
     Default:        -
+    Minimum         0
 ```
 
 Enable the asynchronous writing of the log file by using a buffer of the given size in bytes.
+
+A value of 0 will set the default buffer size of 4 Kb.
 
 :::note neon-pro
 
@@ -74,9 +77,12 @@ This feature is only available in Neon Pro.
     Type:           numeric
     Unit:           seconds
     Default:        -
+    Minimum         0
 ```
 
 Enable the flushing of the log file buffer at each given delay in seconds.
+
+A value of 0 will set the default flushing interval of 10s.
 
 :::note neon-pro
 
