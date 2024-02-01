@@ -6,12 +6,6 @@ toc_max_heading_level: 2
 
 The `loader` section contains all the configuration settings of the [loader](/neon/configuration/loader/overview/).
 
-:::info
-
-This section is not required to start the server instance.
-
-:::
-
 - [Example configuration](#example-configuration)
 - [Directives](#directives)
   - [`execStartup`](#execStartup)
@@ -57,11 +51,21 @@ loader:
     Syntax:         execStartup: <delay>
     Type:           numeric
     Unit:           second
+    Minimum:        0 (disabled)
     Default:        15
-    Minimum:        1
 ```
 
-The execution startup delay.
+The time interval in seconds between the instance startup and the first execution.
+
+This option allows to set a minimal time interval to execute rules at startup.
+
+If this option is enabled and the [`execInterval`](#execInterval) option is disabled, the instance will run in _one-off_ execution: only one execution will be processed. If this single execution is not successful, the failsafe execution if enabled will still recover the state before stopping any other execution.
+
+:::tip
+
+To disable the startup execution, sets the value to 0.
+
+:::
 
 ### `execInterval` {#execInterval}
 
@@ -69,11 +73,25 @@ The execution startup delay.
     Syntax:         execInterval: <delay>
     Type:           numeric
     Unit:           second
+    Minimum:        0 (disabled)
     Default:        900
-    Minimum:        1
 ```
 
-The execution interval delay.
+The time interval in seconds between each execution after the first startup execution.
+
+If this option is enabled, the rules will be periodically executed to refresh the server state.
+
+:::tip
+
+To disable periodic execution, sets the value to 0.
+
+:::
+
+:::warning
+
+If this option and the [`execStartup`](#execStartup) option are both set to 0, no execution will be processed.
+
+:::
 
 ### `execFailsafeInterval` {#execFailsafeInterval}
 
@@ -81,23 +99,19 @@ The execution interval delay.
     Syntax:         execFailsafeInterval: <delay>
     Type:           numeric
     Unit:           second
-    Default:        300
     Minimum:        0 (disabled)
+    Default:        300
 ```
 
-The execution interval delay when failsafe mode is enabled.
+The time interval in seconds between a failed execution and a new execution.
 
-The failsafe mode is enabled when at least one rule has failed during the last execution. The next execution will use this shorter interval time to execute and to try to recover quickly. The failsafe mode is disabled next to a succeeded execution of all rules.
+The failsafe execution is enabled when at least one rule has failed. The next execution will use this specific time interval to try to recover quickly (shorter interval) or to stay safe from external issues (longer interval).
 
-:::warning
-
-The interval must be lesser than [`execInterval`](#execInterval).
-
-:::
+The failsafe execution is disabled only when all rules are successful.
 
 :::tip
 
-To disable the failsafe mode, sets the value to 0.
+To disable the failsafe execution, sets the value to 0.
 
 :::
 
@@ -106,9 +120,8 @@ To disable the failsafe mode, sets the value to 0.
 ```
     Syntax:         execWorkers: <count>
     Type:           numeric
-    Unit:           -
-    Default:        1
     Minimum:        1
+    Default:        1
 ```
 
 The number of execution workers.
@@ -118,9 +131,8 @@ The number of execution workers.
 ```
     Syntax:         execMaxOps: <count>
     Type:           numeric
-    Unit:           -
-    Default:        100
     Minimum:        0 (disabled)
+    Default:        100
 ```
 
 The maximum number of operations per execution before delaying.
@@ -136,11 +148,11 @@ To disable this limit, sets the value to 0.
 ### `execMaxDelay` {#execMaxDelay}
 
 ```
-    Syntax:         execMaxDelay: <count>
+    Syntax:         execMaxDelay: <delay>
     Type:           numeric
-    Unit:           op
-    Default:        60
+    Unit:           second
     Minimum:        0 (disabled)
+    Default:        60
 ```
 
 The interval delay in seconds between each delayed execution.

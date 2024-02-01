@@ -93,11 +93,11 @@ The JSON path to filter to extract the resource items list.
     Default:        -
 ```
 
-The map defines the attributes to extract of each result item.
+The map defines the parameters to extract from each result item.
 
-The value of each entry is a JSON path to extract the given attribute.
+The value of each entry is a JSON path to extract the given attribute from the resource.
 
-Each extracted item will be available as a dynamic parameter to the item resource.
+Extracted parameters will be available as dynamic parameters for each item resource.
 
 **Example:**
 

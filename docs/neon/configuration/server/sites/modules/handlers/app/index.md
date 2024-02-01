@@ -211,7 +211,7 @@ The timeout to execute the bundle.
     Syntax:         maxVMs: <count>
     Type:           numeric
     Default:        number of detected CPUs
-    Unit:           seconds
+    Minimum:        1
 ```
 
 The number of Javascript VMs to run simultaneously.
@@ -221,6 +221,7 @@ The number of Javascript VMs to run simultaneously.
 ```
     Syntax:         minSpareVMs: <count>
     Type:           numeric
+    Minimum:        0
     Default:        0
 ```
 
@@ -237,6 +238,7 @@ This feature is only available in Neon Pro.
 ```
     Syntax:         maxSpareVMs: <count>
     Type:           numeric
+    Minimum:        0
     Default:        0
 ```
 

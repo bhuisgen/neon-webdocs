@@ -16,4 +16,4 @@ $ neon serve
 
 Use this command to run the server instance.
 
-The default configuration file is used. To use an alternative configuration, set the environment variable `CONFIG_FILE`.
+The default configuration file is used. To use a different file, set the environment variable `CONFIG_FILE`.
