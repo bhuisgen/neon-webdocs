@@ -36,16 +36,29 @@ You can override some configuration settings with environment variables.
 
 ### `CONFIG_FILE`
 
+```
+    Type:           string
+    Default:        neon.yaml
+```
+
 The path used for the configuration file.
 
 It overrides the default configuration path.
 
 ### `DEBUG`
 
+```
+    Type:           boolean
+    Default:        0
+```
+
 The flag to enable debug mode.
 
-:::warning
+### `CHILD_SOCKET`
 
-Do not enable debug mode in production as sensitive data may be logged.
+```
+    Type:           string
+    Default:        neon.sock
+```
 
-:::
+The socket file used to reload the instance.

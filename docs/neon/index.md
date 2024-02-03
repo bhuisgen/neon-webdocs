@@ -6,7 +6,7 @@ slug: /
 
 # Neon
 
-Neon is an web server dedicated to serve Javascript web applications. Like any other web servers, the hosted websites are served to clients but with three major features:
+Neon is a web server dedicated to serve Javascript web applications. Like any other web servers, the hosted websites are served to clients but with three major features:
 
 - it can fetch content from external services
 

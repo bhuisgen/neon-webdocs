@@ -105,9 +105,7 @@ If this option and the [`execStartup`](#execStartup) option are both set to 0, n
 
 The time interval in seconds between a failed execution and a new execution.
 
-The failsafe execution is enabled when at least one rule has failed. The next execution will use this specific time interval to try to recover quickly (shorter interval) or to stay safe from external issues (longer interval).
-
-The failsafe execution is disabled only when all rules are successful.
+The failsafe execution is activated when at least one rule has failed. The next execution will use this specific time interval to try to recover quickly (shorter interval) or to stay safe from external issues (longer interval). The failsafe execution only disables when all rules pass.
 
 :::tip
 

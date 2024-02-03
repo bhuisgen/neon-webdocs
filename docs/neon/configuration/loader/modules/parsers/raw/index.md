@@ -4,7 +4,7 @@ toc_max_heading_level: 2
 
 # raw
 
-The `raw` parser loads a resource and store its response.
+The `raw` parser loads a resource.
 
 - [Example configuration](#example-configuration)
   - [`resource`](#resource)

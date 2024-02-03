@@ -62,7 +62,7 @@ By default the console is used as log output.
 
 Enable the asynchronous writing of the log file by using a buffer of the given size in bytes.
 
-A value of 0 will set the default buffer size to 4 Kb.
+A value of 0 will set the default buffer size to 4 KB.
 
 :::note neon-pro
 
