@@ -66,6 +66,7 @@ const sidebars: SidebarsConfig = {
                       type: "category",
                       label: "Provider",
                       items: [
+                        "neon/configuration/fetcher/modules/providers/file/index",
                         "neon/configuration/fetcher/modules/providers/rest/index",
                       ],
                     },

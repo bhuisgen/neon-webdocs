@@ -4,7 +4,7 @@ toc_max_heading_level: 2
 
 # rest
 
-The `rest` provider is used to fetch REST API resources.
+The `rest` provider is used to fetch a resource from an API endpoint.
 
 - [Example configuration](#example-configuration)
 - [Directives](#directives)
