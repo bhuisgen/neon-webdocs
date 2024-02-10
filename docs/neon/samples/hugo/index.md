@@ -19,31 +19,32 @@ $ hugo
 ## Configure
 
 ```yaml title="neon.yaml" showLineNumbers
-server:
-  listeners:
-    default:
-      local:
-        listenAddr: 0.0.0.0
-        listenPort: 8080
-  sites:
-    main:
-      listeners:
-        - default
-      routes:
-        default:
-          middlewares:
-            logger:
-            compress:
-              level: -1
-            static:
-              path: public/
-              index: true
-          handler:
-            file:
-              path: public/404/index.html
-              statusCode: 404
-              cache: true
-              cacheTTL: 3600
+app:
+  server:
+    listeners:
+      default:
+        local:
+          listenAddr: 0.0.0.0
+          listenPort: 8080
+    sites:
+      main:
+        listeners:
+          - default
+        routes:
+          default:
+            middlewares:
+              logger:
+              compress:
+                level: -1
+              static:
+                path: public/
+                index: true
+            handler:
+              file:
+                path: public/404/index.html
+                statusCode: 404
+                cache: true
+                cacheTTL: 3600
 ```
 
 ## Check the configuration

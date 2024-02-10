@@ -146,10 +146,10 @@ const sidebars: SidebarsConfig = {
                           type: "category",
                           label: "Handler",
                           items: [
-                            "neon/configuration/server/sites/modules/handlers/app/index",
+                            "neon/configuration/server/sites/modules/handlers/empty/index",
                             "neon/configuration/server/sites/modules/handlers/feed/index",
                             "neon/configuration/server/sites/modules/handlers/file/index",
-                            "neon/configuration/server/sites/modules/handlers/empty/index",
+                            "neon/configuration/server/sites/modules/handlers/js/index",
                             "neon/configuration/server/sites/modules/handlers/resource/index",
                             "neon/configuration/server/sites/modules/handlers/robots/index",
                             "neon/configuration/server/sites/modules/handlers/sitemap/index",

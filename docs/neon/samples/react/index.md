@@ -171,30 +171,31 @@ dist
 ## Configuration
 
 ```yaml title="neon.yaml" showLineNumbers
-server:
-  listeners:
-    default:
-      local:
-        listenAddr: 0.0.0.0
-        listenPort: 8080
-  sites:
-    main:
-      listeners:
-        - default
-      routes:
-        default:
-          middlewares:
-            logger:
-            compress:
-              level: -1
-            static:
-              path: dist/app/static
-          handler:
-            app:
-              index: dist/app/index.html
-              bundle: dist/app/bundle.js
-              cache: true
-              cacheTTL: 3600
+app:
+  server:
+    listeners:
+      default:
+        local:
+          listenAddr: 0.0.0.0
+          listenPort: 8080
+    sites:
+      main:
+        listeners:
+          - default
+        routes:
+          default:
+            middlewares:
+              logger:
+              compress:
+                level: -1
+              static:
+                path: dist/app/static
+            handler:
+              js:
+                index: dist/app/index.html
+                bundle: dist/app/bundle.js
+                cache: true
+                cacheTTL: 3600
 ```
 
 ## Check the configuration

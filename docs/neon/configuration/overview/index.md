@@ -20,15 +20,44 @@ You can specify a different configuration file by setting the environment variab
 
 ### Syntax
 
-The syntax of the configuration is in YAML.
+The syntax of the configuration is in [YAML](https://yaml.org/spec/1.2.2/).
 
-The file is composed of different sections. Each section can have options or other sections. A section is defined by
-its own name. An option can have one value (single value) or multiple values (multi-value list) from these types:
+The file is composed of different sections composed of options and other sections.
+
+A section is defined by its own name.
+
+An option can have one value (single value) or multiple values (multi-value list) from these types:
 
 - string: for textual content
 - number: for numeric content
-- boolean: to enable/disable the option
-- an object: a group of settings
+- boolean: for flag to enable/disable
+- an object: a group of options
+
+### Sample configuration file
+
+```yaml title="neon.yaml" showLineNumbers
+app:
+  store:
+    storage:
+      memory:
+
+  server:
+    listeners:
+      default:
+        local:
+          listenAddr: 0.0.0.0
+          listenPort: 8080
+    sites:
+      main:
+        listeners:
+          - default
+        routes:
+          default:
+            middlewares:
+            handler:
+```
+
+The main section of the configuration is `app` and is mandatory. Sub-sections can be optional depending of their role and the features enabled.
 
 ## Environment variables
 
@@ -42,8 +71,6 @@ You can override some configuration settings with environment variables.
 ```
 
 The path used for the configuration file.
-
-It overrides the default configuration path.
 
 ### `DEBUG`
 

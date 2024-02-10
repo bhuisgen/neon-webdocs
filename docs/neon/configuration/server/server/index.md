@@ -20,7 +20,6 @@ server:
       local:
         listenAddr: 0.0.0.0
         listenPort: 8080
-
   sites:
     default:
       listeners:
@@ -31,7 +30,7 @@ server:
             static:
               path: dist/app/static
           handler:
-            app:
+            js:
               index: dist/app/index.html
               bundle: dist/app/bundle.js
 ```

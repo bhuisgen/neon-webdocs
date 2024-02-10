@@ -2,9 +2,9 @@
 toc_max_heading_level: 2
 ---
 
-# app
+# js
 
-The `app` handler allows to serve a Javascript application composed of its HTML and bundle files.
+The `js` handler allows to serve a Javascript application.
 
 - [Example configuration](#example-configuration)
 - [Directives](#directives)
@@ -45,7 +45,7 @@ sites:
             path: dist/static
         handler:
           # highlight-start
-          app:
+          js:
             index: dist/index.html
             bundle: dist/bundle.js
             rules:

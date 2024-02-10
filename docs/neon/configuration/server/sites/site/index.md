@@ -30,7 +30,7 @@ server:
             static:
               path: dist/app/static
           handler:
-            app:
+            js:
               index: dist/app/index.html
               bundle: dist/app/bundle.js
     admin:
@@ -44,7 +44,7 @@ server:
             static:
               path: dist/admin/static
           handler:
-            app:
+            js:
               index: dist/admin/index.html
               bundle: dist/admin/bundle.js
 ```
