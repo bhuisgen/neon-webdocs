@@ -12,7 +12,7 @@ Serving a [React](https://react.dev/) application have some requisites to suppor
 - The client bundle must render initially the same content as the server version to not force a new render (hydration) in the client browser.
 - The HTML index must include the script tag to the client bundle, not the server bundle.
 
-For the server configuration, the [`app`](/neon/configuration/server/sites/modules/handlers/app/) handler will execute the server bundle and serve the hydrated HTML content to clients. The [`static`](/neon/configuration/server/sites/modules/middlewares/static) middleware serves the static assets including the client bundle.
+For the server configuration, the [`js`](/neon/configuration/server/sites/modules/handlers/js/) handler will execute the server bundle and serve the hydrated HTML content to clients. The [`static`](/neon/configuration/server/sites/modules/middlewares/static) middleware serves the static assets including the client bundle.
 
 :::tip
 
