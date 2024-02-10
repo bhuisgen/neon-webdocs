@@ -23,16 +23,16 @@ fetcher:
 
 loader:
   rules:
-    data:
+    load-data:
       raw:
-        local:
+        data:
           # highlight-start
           path: ./dist/data.json
           # highlight-end
 ```
 
 - The provider **local** uses the provider module `file`.
-- The loader rules has a rule for the resource **data** which loads this resource using the provider **local** with the given configuration.
+- The loader rules has a rule for the resource **data** which loads it using the provider **local** with the given configuration.
 
 ## Directives {#directives}
 

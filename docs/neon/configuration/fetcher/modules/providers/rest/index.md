@@ -42,19 +42,19 @@ fetcher:
 
 loader:
   rules:
-    my-resource:
+    load-resource:
       raw:
-        api:
+        resource:
           # highlight-start
           method: GET
-          url: https://<backend_url>/api/v1/my-resource
+          url: https://<backend_url>/api/v1/resource
           params:
             limit: 10
           # highlight-end
 ```
 
 - The provider **api** uses the provider module `rest`.
-- The loader rules has a rule for the resource _my-resource_ which loads this resource using the provider **api** with the given configuration.
+- The loader rules has a rule for the resource _resource_ which loads it using the provider **api** with the given configuration.
 
 ## Directives {#directives}
 

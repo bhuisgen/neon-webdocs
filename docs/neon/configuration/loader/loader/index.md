@@ -179,7 +179,7 @@ This map defines all the loading rules.
 
 ```yaml
 rules:
-  posts-list:
+  loads-posts:
     json:
       # parser configuration
 ```
