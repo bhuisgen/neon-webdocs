@@ -13,10 +13,11 @@ The `rest` provider is used to fetch a resource from an API endpoint.
   - [`tlsCertFiles`](#tlsCertFiles)
   - [`tlsKeyFile`](#tlsKeyFiles)
   - [`timeout`](#timeout)
-  - [`maxConnsPerHost`](#maxConnsPerHost)
+  - [`connectTimeout`](#connectTimeout)
   - [`maxIdleConns`](#maxIdleConns)
   - [`maxIdleConnsPerHost`](#maxIdleConnsPerHost)
   - [`idleConnTimeout`](#idleConnTimeout)
+  - [`maxConnsPerHost`](#maxConnsPerHost)
   - [`retry`](#retry)
   - [`retryDelay`](#retryDelay)
   - [`headers`](#headers)
@@ -67,7 +68,7 @@ loader:
     Default:        -
 ```
 
-The TLS CA file(s) to use for requests.
+The TLS CA file(s) of the fetch client.
 
 ### `tlsCertFiles` {#tlsCertFiles}
 
@@ -78,7 +79,7 @@ The TLS CA file(s) to use for requests.
     Default:        -
 ```
 
-The TLS client certificate file(s) to use for requests.
+The TLS client certificate file(s) of the fetch client.
 
 ### `tlsKeyFiles` {#tlsKeyFiles}
 
@@ -89,7 +90,7 @@ The TLS client certificate file(s) to use for requests.
     Default:        -
 ```
 
-The TLS client key file(s) to use for requests.
+The TLS client key file(s) of the fetch client.
 
 ### `timeout` {#timeout}
 
@@ -97,16 +98,21 @@ The TLS client key file(s) to use for requests.
   Syntax:         timeout: <duration>
   Type:           numeric
   Unit:           second
-  Default:        30
+  Default:        15
 ```
 
-The timeout to use for all requests.
+The timeout to fetch a request.
 
-:::info
+### `connectTimeout` {#connectTimeout}
 
-This timeout is global to all requests.
+```
+  Syntax:         connectTimeout: <duration>
+  Type:           numeric
+  Unit:           second
+  Default:        5
+```
 
-:::
+The connect timeout to fetch a request.
 
 ### `maxConnsPerHost` {#maxConnsPerHost}
 
@@ -194,7 +200,7 @@ A value of `0` means no delay.
     Map value:      string
 ```
 
-The headers to use for all requests.
+The global headers to use for requests.
 
 **Example:**
 
@@ -214,7 +220,7 @@ headers:
     Default:        -
 ```
 
-The parameters to use for all requests.
+The global parameters to use for requests.
 
 **Example:**
 
@@ -257,7 +263,13 @@ The request URL.
     Default:        -
 ```
 
-The headers of the request.
+The request headers.
+
+:::tip
+
+Any existing global header will be overwritten.
+
+:::
 
 **Example:**
 
@@ -277,7 +289,13 @@ headers:
     Default:        -
 ```
 
-The parameters of the request.
+The request parameters.
+
+:::tip
+
+Any existing global parameter will be overwritten.
+
+:::
 
 **Example:**
 
