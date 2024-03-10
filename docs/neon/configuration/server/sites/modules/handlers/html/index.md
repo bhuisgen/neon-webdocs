@@ -2,9 +2,9 @@
 toc_max_heading_level: 2
 ---
 
-# file
+# html
 
-The `file` handler allows to serve a file.
+The `html` handler allows to serve a [HTML template](https://pkg.go.dev/text/template).
 
 - [Example configuration](#example-configuration)
 - [Directives](#directives)
@@ -13,6 +13,7 @@ The `file` handler allows to serve a file.
   - [`statusCode`](#statusCode)
   - [`cache`](#cache)
   - [`cacheTTL`](#cacheTTL)
+  - [`resources`](#resources)
 
 ## Example configuration
 
@@ -23,19 +24,23 @@ sites:
       "/file":
         handler:
           # highlight-start
-          file:
-            path: dist/first.html
-          # highlight-end
-      "/path/":
-        handler:
-          # highlight-start
-          file:
-            path: dist/second.html
+          html:
+            path: dist/template.gotmpl
+            cache: true
+            cacheTTL: 3600
+            resources:
+              - content
           # highlight-end
 ```
 
-- The first handler renders the file `dist/file1.html` for the URL `/single`.
-- The second handler renders the file `dist/file2.html` for any URLs starting with the path `/path/`.
+```go title="template.gotmpl" showLineNumbers
+{{ with .Resources.content }}
+  {{ range $index, $result := .Data }}
+    {{ $result | printf "%s" }}
+    {{ break }}
+  {{ end }}
+{{ end }}
+```
 
 ## Directives
 
@@ -46,7 +51,7 @@ sites:
     Type:           string
 ```
 
-The path of the file.
+The path of the Go template.
 
 ### `contentType` {#contentType}
 
@@ -57,7 +62,7 @@ The path of the file.
 
 The content type to return.
 
-If this option is missing, the content type will be automatically detected from the file extension otherwise from the render content body.
+If this option is missing, the content type will be automatically detected from the render content body.
 
 ### `statusCode` {#statusCode}
 
@@ -91,3 +96,14 @@ Enable the render cache.
 The TTL of cached render in seconds.
 
 When the TTL is expired, a new render is processed.
+
+### `resources` {#resources}
+
+```
+    Syntax:         resources: <list>
+    Type:           list
+    Item type:      string
+    Default:        -
+```
+
+The list of resources to pass to the template renderer.

@@ -15,6 +15,7 @@ This feature is only available in Neon Pro.
 - [Example configuration](#example-configuration)
 - [Directives](#directives)
   - [`name`](#name)
+  - [`contentType`](#contentType)
   - [`statusCode`](#statusCode)
   - [`cache`](#cache)
   - [`cacheTTL`](#cacheTTL)
@@ -44,11 +45,16 @@ sites:
 
 The resource name.
 
-:::info
+### `contentType` {#contentType}
 
-Runtime resource is allowed.
+```
+    Syntax:         contentType: <media-type>
+    Type:           string
+```
 
-:::
+The content type to return.
+
+If this option is missing, the content type will be automatically detected from the render content body.
 
 ### `statusCode` {#statusCode}
 
@@ -59,12 +65,6 @@ Runtime resource is allowed.
 ```
 
 The status code to return.
-
-:::warning
-
-This status code is only returned if the last render is successful.
-
-:::
 
 ### `cache` {#cache}
 

@@ -2,13 +2,14 @@
 toc_max_heading_level: 2
 ---
 
-# template
+# text
 
-The `template` handler allows to serve a template and cache its render.
+The `text` handler allows to serve a [text template](https://pkg.go.dev/text/template).
 
 - [Example configuration](#example-configuration)
 - [Directives](#directives)
   - [`path`](#path)
+  - [`contentType`](#contentType)
   - [`statusCode`](#statusCode)
   - [`cache`](#cache)
   - [`cacheTTL`](#cacheTTL)
@@ -23,13 +24,22 @@ sites:
       "/file":
         handler:
           # highlight-start
-          template:
-            path: dist/config.gotmpl
+          text:
+            path: dist/template.gotmpl
             cache: true
             cacheTTL: 3600
             resources:
-              - config
+              - content
           # highlight-end
+```
+
+```go title="template.gotmpl" showLineNumbers
+{{ with .Resources.content }}
+  {{ range $index, $result := .Data }}
+    {{ $result | printf "%s" }}
+    {{ break }}
+  {{ end }}
+{{ end }}
 ```
 
 ## Directives
@@ -37,11 +47,22 @@ sites:
 ### `path` {#path}
 
 ```
-    Syntax:         path: <template>
+    Syntax:         path: <file>
     Type:           string
 ```
 
-The path of the template to serve.
+The path of the Go template.
+
+### `contentType` {#contentType}
+
+```
+    Syntax:         contentType: <media-type>
+    Type:           string
+```
+
+The content type to return.
+
+If this option is missing, the content type will be automatically detected from the render content body.
 
 ### `statusCode` {#statusCode}
 
@@ -52,12 +73,6 @@ The path of the template to serve.
 ```
 
 The status code to return.
-
-:::warning
-
-This status code is only returned if the last render is successful.
-
-:::
 
 ### `cache` {#cache}
 
