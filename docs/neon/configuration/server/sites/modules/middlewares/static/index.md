@@ -19,10 +19,8 @@ sites:
     routes:
       default:
         middlewares:
-          # highlight-start
           static:
             path: dist/static
-          # highlight-end
 ```
 
 - Static files are served from the local directory `dist/static`.

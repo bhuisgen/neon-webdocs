@@ -41,7 +41,6 @@ sites:
   routes:
     "/sitemap.xml":
       handler:
-        # highlight-start
         sitemap:
           root: https://example.org
           kind: sitemap
@@ -58,7 +57,6 @@ sites:
                 filter: $.data
                 itemLoc: $.url
                 itemLastmod: $.date
-        # highlight-end
 ```
 
 - The root URL of all sitemap items is `https://example.org`.

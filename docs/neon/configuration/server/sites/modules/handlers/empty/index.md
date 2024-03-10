@@ -24,10 +24,8 @@ sites:
     routes:
       default:
         handler:
-          # highlight-start
           empty:
             statusCode: 200
-          # highlight-end
 ```
 
 - The server serves by default for any URL an empty response with the status code 200.

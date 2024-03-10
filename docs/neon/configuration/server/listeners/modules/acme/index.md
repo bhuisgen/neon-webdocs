@@ -35,14 +35,12 @@ This listener requires a public facing server with its HTTP network port 80 avai
 ```yaml
 listeners:
   default:
-    # highlight-start
     acme:
       domains:
         - my.domain.org
       cacheDir: acme/
       listenAddr: 0.0.0.0
       listenPort: 443
-    # highlight-end
 ```
 
 - The **default** listener is listening on all network interfaces with port 443.

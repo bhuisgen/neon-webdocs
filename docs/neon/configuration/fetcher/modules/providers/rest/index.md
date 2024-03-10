@@ -34,24 +34,20 @@ The `rest` provider is used to fetch a resource from an API endpoint.
 fetcher:
   providers:
     api:
-      # highlight-start
       rest:
         headers:
           Content-Type: application/json
           Authorization: "Bearer: my_jwt_token"
-      # highlight-end
 
 loader:
   rules:
     load-resource:
       raw:
         resource:
-          # highlight-start
           method: GET
           url: https://<backend_url>/api/v1/resource
           params:
             limit: 10
-          # highlight-end
 ```
 
 - The provider **api** uses the provider module `rest`.

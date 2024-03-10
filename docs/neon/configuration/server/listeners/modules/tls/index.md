@@ -24,7 +24,6 @@ The `tls` listener is a TLS secured network listener.
 ```yaml
 listeners:
   default:
-    # highlight-start
     tls:
       listenAddr: 0.0.0.0
       listenPort: 443
@@ -34,7 +33,6 @@ listeners:
         - cert.pem
       keyFiles:
         - key.pem
-    # highlight-end
 ```
 
 - The **default** listener listens on all network interfaces with port 443.

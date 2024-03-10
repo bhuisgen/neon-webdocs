@@ -28,10 +28,8 @@ sites:
     routes:
       "/sample":
         handler:
-          # highlight-start
           resource:
             name: sample
-          # highlight-end
 ```
 
 ## Directives

@@ -85,7 +85,6 @@ sites:
     routes:
       "/index.xml":
         handler:
-          # highlight-start
           feed:
             root: https://example.org
             kind: rss
@@ -98,7 +97,6 @@ sites:
                 itemTitle: $.title
                 itemLink: $.link
                 itemContent: $.content
-          # highlight-end
 ```
 
 - The root URL of the website is `https://example.org`.

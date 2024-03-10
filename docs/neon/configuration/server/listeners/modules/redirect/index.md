@@ -39,11 +39,9 @@ server:
         keyFiles:
           - key.pem
     unsecured:
-      # highlight-start
       redirect:
         listenAddr: 0.0.0.0
         listenPort: 80
-      # highlight-end
   sites:
     default:
       listeners:

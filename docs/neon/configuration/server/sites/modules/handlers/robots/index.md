@@ -27,13 +27,11 @@ sites:
     routes:
       "/robots.txt":
         handler:
-          # highlight-start
           robots:
             hosts:
               - example.org
             sitemaps:
               - https://example.org/sitemap.xml
-          # highlight-end
 ```
 
 - The robots.txt file is rendered for the URL path `/robots.txt`.

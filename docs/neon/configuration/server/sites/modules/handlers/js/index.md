@@ -44,7 +44,6 @@ sites:
           static:
             path: dist/static
         handler:
-          # highlight-start
           js:
             index: dist/index.html
             bundle: dist/bundle.js
@@ -63,7 +62,6 @@ sites:
                   - key: post-$slug
                     resource: post-$slug
                 last: true
-            # highlight-end
 ```
 
 - The index file of the application is `dist/index.html`.

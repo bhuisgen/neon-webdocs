@@ -13,7 +13,5 @@ The `memory` storage stores the server state in memory.
 ```yaml
 store:
   storage:
-    # highlight-start
     memory:
-    # highlight-end
 ```

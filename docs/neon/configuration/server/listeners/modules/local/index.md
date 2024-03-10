@@ -26,11 +26,9 @@ This listener doesn't use secured connections.
 ```yaml
 listeners:
   default:
-    # highlight-start
     local:
       listenAddr: 0.0.0.0
       listenPort: 80
-    # highlight-end
 ```
 
 - The **default** listener is listening on all network interfaces with port 80.

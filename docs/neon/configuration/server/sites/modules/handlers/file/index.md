@@ -22,16 +22,12 @@ sites:
     routes:
       "/file":
         handler:
-          # highlight-start
           file:
             path: dist/first.html
-          # highlight-end
       "/path/":
         handler:
-          # highlight-start
           file:
             path: dist/second.html
-          # highlight-end
 ```
 
 - The first handler renders the file `dist/file1.html` for the URL `/single`.

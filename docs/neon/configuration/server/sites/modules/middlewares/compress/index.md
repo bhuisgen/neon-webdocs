@@ -18,10 +18,8 @@ sites:
     routes:
       default:
         middlewares:
-          # highlight-start
           compress:
             level: -1
-          # highlight-end
 ```
 
 ## Directives {#directives}

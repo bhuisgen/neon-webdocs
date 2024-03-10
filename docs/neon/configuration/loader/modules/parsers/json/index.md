@@ -27,7 +27,6 @@ fetcher:
 loader:
   rules:
     load-posts:
-      # highlight-start
       json:
         resource:
           posts:
@@ -47,7 +46,6 @@ loader:
             api:
               method: GET
               url: $url
-      # highlight-end
 ```
 
 - The provider **api** uses the `rest` provider which fetches a remote JSON API.

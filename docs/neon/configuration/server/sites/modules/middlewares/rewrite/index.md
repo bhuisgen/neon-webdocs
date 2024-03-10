@@ -22,7 +22,6 @@ sites:
     routes:
       default:
         middlewares:
-          # highlight-start
           rewrite:
             rules:
               - path: ^/old-content/?$
@@ -33,7 +32,6 @@ sites:
                 replacement: /new-slug
                 flag: permanent
                 last: true
-          # highlight-end
 ```
 
 **First rule**

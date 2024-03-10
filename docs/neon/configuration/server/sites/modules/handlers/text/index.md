@@ -23,14 +23,12 @@ sites:
     routes:
       "/file":
         handler:
-          # highlight-start
           text:
             path: dist/template.gotmpl
             cache: true
             cacheTTL: 3600
             resources:
               - content
-          # highlight-end
 ```
 
 ```go title="template.gotmpl" showLineNumbers

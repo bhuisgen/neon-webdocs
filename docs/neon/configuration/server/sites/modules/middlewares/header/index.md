@@ -23,7 +23,6 @@ sites:
     routes:
       default:
         middlewares:
-          # highlight-start
           header:
             rules:
               - path: ^/path1/?$
@@ -32,7 +31,6 @@ sites:
               - path: ^/path2/?$
                 set:
                   key2: value2
-          # highlight-end
 ```
 
 - The header middleware will process two rules for requests targeting this server.

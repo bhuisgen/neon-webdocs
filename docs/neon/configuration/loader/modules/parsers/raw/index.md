@@ -22,14 +22,12 @@ fetcher:
 loader:
   rules:
     load-post1:
-      # highlight-start
       raw:
         resource:
           post1:
             api:
               method: GET
               url: https://<backend_url>/api/v1/posts/1
-      # highlight-end
 ```
 
 - The provider **api** uses the `rest` provider which fetches a remote JSON API.

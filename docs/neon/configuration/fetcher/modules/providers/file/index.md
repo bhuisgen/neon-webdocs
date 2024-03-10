@@ -17,18 +17,14 @@ The `file` provider is used to fetch a resource from local file.
 fetcher:
   providers:
     local:
-      # highlight-start
       file:
-      # highlight-end
 
 loader:
   rules:
     load-data:
       raw:
         data:
-          # highlight-start
           path: ./dist/data.json
-          # highlight-end
 ```
 
 - The provider **local** uses the provider module `file`.

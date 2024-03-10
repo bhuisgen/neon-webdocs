@@ -28,9 +28,7 @@ sites:
     routes:
       default:
         middlewares:
-          # highlight-start
           logger:
-          # highlight-end
 ```
 
 - The logging middleware outputs all incoming requests to the standard output i.e. the console.
