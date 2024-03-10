@@ -154,6 +154,7 @@ const sidebars: SidebarsConfig = {
                             "neon/configuration/server/sites/modules/handlers/resource/index",
                             "neon/configuration/server/sites/modules/handlers/robots/index",
                             "neon/configuration/server/sites/modules/handlers/sitemap/index",
+                            "neon/configuration/server/sites/modules/handlers/status/index",
                             "neon/configuration/server/sites/modules/handlers/text/index",
                           ],
                         },

@@ -6,6 +6,12 @@ toc_max_heading_level: 2
 
 The `text` handler allows to serve a [text template](https://pkg.go.dev/text/template).
 
+:::note neon-pro
+
+This feature is only available in Neon Pro.
+
+:::
+
 - [Example configuration](#example-configuration)
 - [Directives](#directives)
   - [`path`](#path)
