@@ -23,7 +23,7 @@ Extract the downloaded archive to get the `neon` binary:
 <TabItem value="linux" label="Linux" default>
 
 ```shell
-$ tar -xvzf neon-oss_linux.tar.gz
+$ tar -xzf neon-oss_linux.tar.gz -C /usr/local
 ```
 
 </TabItem>
@@ -31,32 +31,31 @@ $ tar -xvzf neon-oss_linux.tar.gz
 <TabItem value="darwin" label="macOS">
 
 ```shell
-$ tar -xvzf neon-oss_darwin.tar.gz
+$ tar -xzf neon-oss_darwin.tar.gz -C /usr/local
 ```
 
 </TabItem>
 
-</Tabs>
-
-Copy the binary where you want like in your project directory or in your `PATH` but make sure that the file has the
-execute permission.
-
-<Tabs groupId="os">
-
-<TabItem value="linux" label="Linux" default>
+<TabItem value="freebsd" label="FreeBSD">
 
 ```shell
-$ cp neon /usr/local/bin/neon
-$ chmod +x /usr/local/bin/neon
+$ tar -xzf neon-oss_freebsd.tar.gz -C /usr/local
 ```
 
 </TabItem>
 
-<TabItem value="darwin" label="macOS">
+<TabItem value="netbsd" label="NetBSD">
 
 ```shell
-$ cp neon /usr/local/bin/neon
-$ chmod +x /usr/local/bin/neon
+$ tar -xzf neon-oss_netbsd.tar.gz -C /usr/local
+```
+
+</TabItem>
+
+<TabItem value="openbsd" label="OpenBSD">
+
+```shell
+$ tar -xzf neon-oss_openbsd.tar.gz -C /usr/local
 ```
 
 </TabItem>
@@ -73,27 +72,27 @@ It should output the `neon` binary version.
 
 ## Setting up
 
-For this quick start, we will serve a default application already packaged into Neon: the status application.
+For this quick start, we will download a sample application and host it with Neon on your localhost.
 
-First initialize your instance:
+Clone the git repository:
 
 ```shell
-$ neon init -template status
+$ git clone github.com/bhuisgen/neon-sample-app
 ```
 
-A default configuration file `neon.yaml` and a `data` directory should have been generated into your current directory. The `data` directory contains the HTML file, the bundle file and all static resources of the application.
+A default configuration file `neon.yaml` and a `data` directory are present in the project directory. The `data` directory contains the HTML file, the JS bundle and all static resources required to host the application.
 
-Start your instance:
+Start the Neon instance:
 
 ```shell
 $ neon serve
 ```
 
-Neon should be running on your local port 8080. Open your browser and go to this address:
+Neon should be listening on your local port 8080. Open your browser and go to this address:
 
 - [http://localhost:8080](http://localhost:8080)
 
-The status app will showing up.
+The app will showing up.
 
 Quick start completed!
 

@@ -7,11 +7,7 @@ import TabItem from '@theme/TabItem';
 
 # Binary
 
-## Downloading
-
-First, grab the latest binary from the [release](https://github.com/bhuisgen/neon-oss/releases) page.
-
-## Extracting
+First, grab the latest binary archive from the [release](https://github.com/bhuisgen/neon-oss/releases) page.
 
 Extract the downloaded archive to get the `neon` binary.
 
@@ -20,7 +16,7 @@ Extract the downloaded archive to get the `neon` binary.
 <TabItem value="linux" label="Linux" default>
 
 ```shell
-$ tar -xvzf neon_linux_amd64.tar.gz
+$ tar -xzf neon-oss_linux.tar.gz -C /usr/local
 ```
 
 </TabItem>
@@ -28,33 +24,31 @@ $ tar -xvzf neon_linux_amd64.tar.gz
 <TabItem value="darwin" label="macOS">
 
 ```shell
-$ tar -xvzf neon_darwin_amd64.tar.gz
+$ tar -xzf neon-oss_darwin.tar.gz -C /usr/local
 ```
 
 </TabItem>
 
-</Tabs>
-
-## Installing
-
-Copy the binary where you want like in your project directory or your `PATH` but make sure that the file has the execute permission.
-
-<Tabs groupId="os">
-
-<TabItem value="linux" label="Linux" default>
+<TabItem value="freebsd" label="FreeBSD">
 
 ```shell
-$ cp neon /usr/local/bin/neon
-$ chmod +x /usr/local/bin/neon
+$ tar -xzf neon-oss_freebsd.tar.gz -C /usr/local
 ```
 
 </TabItem>
 
-<TabItem value="darwin" label="macOS">
+<TabItem value="netbsd" label="NetBSD">
 
 ```shell
-$ cp neon /usr/local/bin/neon
-$ chmod +x /usr/local/bin/neon
+$ tar -xzf neon-oss_netbsd.tar.gz -C /usr/local
+```
+
+</TabItem>
+
+<TabItem value="openbsd" label="OpenBSD">
+
+```shell
+$ tar -xzf neon-oss_openbsd.tar.gz -C /usr/local
 ```
 
 </TabItem>

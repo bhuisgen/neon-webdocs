@@ -13,6 +13,7 @@ This object represents the server handler.
 
 ```typescript
 interface Handler {
+  language(): string;
   state(): Record<string, Resource>;
 }
 ```
@@ -23,10 +24,24 @@ interface Handler {
 
 ## Methods
 
+### `language` {#method-language}
+
+```typescript
+language(): string;
+```
+
+Returns the language.
+
+:::note neon-pro
+
+This feature is only available in Neon Pro.
+
+:::
+
 ### `state` {#method-state}
 
 ```typescript
-    state(): Record<string, Resource>
+state(): Record<string, Resource>
 ```
 
 Returns the state.

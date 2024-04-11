@@ -13,6 +13,7 @@ This object represents the server instance.
 
 ```typescript
 interface Server {
+  site: Site;
   handler: Handler;
   request: Request;
   response: Response;
@@ -24,6 +25,14 @@ interface Server {
 <TOCInline toc={toc.filter((node) => node.id !== "overview" && node.id !== "index" )} />
 
 ## Properties
+
+### `site` {#property-site}
+
+```typescript
+site: Site;
+```
+
+The site object.
 
 ### `handler` {#property-handler}
 

@@ -118,7 +118,6 @@ To disable the failsafe execution, sets the value to 0.
 ```
     Syntax:         execWorkers: <count>
     Type:           numeric
-    Minimum:        1
     Default:        1
 ```
 

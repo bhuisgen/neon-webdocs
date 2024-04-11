@@ -175,6 +175,7 @@ const sidebars: SidebarsConfig = {
             "neon/cli/neon check/index",
             "neon/cli/neon serve/index",
             "neon/cli/neon register/index",
+            "neon/cli/neon version/index",
           ],
         },
         {
@@ -191,6 +192,7 @@ const sidebars: SidebarsConfig = {
                 "neon/api/objects/Resource/index",
                 "neon/api/objects/Response/index",
                 "neon/api/objects/Server/index",
+                "neon/api/objects/Site/index",
               ],
             },
             "neon/api/examples/index",

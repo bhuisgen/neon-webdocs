@@ -27,7 +27,7 @@ interface Resource {
 ### `response` {#property-response}
 
 ```typescript
-    response: string[] | null
+response: string[] | null
 ```
 
 The resource response as a `string[]` or `null` if there is no content response.

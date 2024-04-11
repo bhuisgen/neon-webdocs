@@ -32,7 +32,7 @@ interface ServerResponse {
 ### `render` {#method-render}
 
 ```typescript
-    render(content: string, status: number): void
+render(content: string, status: number): void
 ```
 
 Renders the response to the client with the given content and status code as response.
@@ -40,7 +40,7 @@ Renders the response to the client with the given content and status code as res
 ### `redirect` {#method-redirect}
 
 ```typescript
-    redirect(url: string, status: number): void
+redirect(url: string, status: number): void
 ```
 
 Redirects the client to the given URL with the given status code.
@@ -48,7 +48,7 @@ Redirects the client to the given URL with the given status code.
 ### `setHeader` {#method-setheader}
 
 ```typescript
-    setHeader(key: string, value: string): void
+setHeader(key: string, value: string): void
 ```
 
 Sets a response header.
@@ -56,7 +56,7 @@ Sets a response header.
 ### `setTitle` {#method-settitle}
 
 ```typescript
-    setTitle(title: string): void
+setTitle(title: string): void
 ```
 
 Sets the `title` markup of the render.
@@ -64,7 +64,7 @@ Sets the `title` markup of the render.
 ### `setMeta` {#method-setmeta}
 
 ```typescript
-    setMeta(name: string, attributes: Map<string, string>): void
+setMeta(name: string, attributes: Map<string, string>): void
 ```
 
 Sets a `meta` markup of the render.
@@ -72,7 +72,7 @@ Sets a `meta` markup of the render.
 ### `setLink` {#method-setlink}
 
 ```typescript
-    setLink(id: string, attributes: Map<string, string>): void
+setLink(id: string, attributes: Map<string, string>): void
 ```
 
 Sets a `link` markup of the render.
@@ -80,7 +80,7 @@ Sets a `link` markup of the render.
 ### `setScript` {#method-setscript}
 
 ```typescript
-    setScript(id: string, attributes: Map<string, string>): void
+setScript(id: string, attributes: Map<string, string>): void
 ```
 
 Set a `script` markup of the render.

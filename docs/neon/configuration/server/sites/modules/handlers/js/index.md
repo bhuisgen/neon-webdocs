@@ -10,19 +10,21 @@ The `js` handler allows to serve a Javascript application.
 - [Directives](#directives)
   - [`index`](#index)
   - [`bundle`](#bundle)
-  - [`bundleCodeCache`](#bundleCodeCache)
   - [`env`](#env)
   - [`container`](#container)
   - [`state`](#state)
-  - [`timeout`](#timeout)
   - [`maxVMs`](#maxVMs)
-  - [`minSpareVMs`](#minSpareVMs)
-  - [`maxSpareVMs`](#maxSpareVMs)
+  - [`vmMaxHeapSize`](#vmMaxHeapSize)
+  - [`vmStackSize`](#vmStackSize)
+  - [`vmTimeout`](#vmTimeout)
   - [`cache`](#cache)
   - [`cacheTTL`](#cacheTTL)
   - [`cacheMaxItems`](#cacheMaxItems)
   - [`cacheMinBodySize`](#cacheMinBodySize)
   - [`cacheMaxBodySize`](#cacheMaxBodySize)
+  - [`cacheLock`](#cacheLock)
+  - [`cacheLockWait`](#cacheLockWait)
+  - [`cacheLockTimeout`](#cacheLockTimeout)
   - [`languages`](#languages)
   - [`defaultLanguage`](#defaultLanguage)
   - [`rules`](#rules)
@@ -117,30 +119,6 @@ The path to the application index file.
 
 The path to the application bundle file.
 
-:::warning
-
-If no bundle file is specified, the HTML file is rendered as is to clients.
-
-:::
-
-### `bundleCodeCache` {#bundleCodeCache}
-
-```
-    Syntax:         bundleCodeCache: <flag>
-    Type:           boolean
-    Default:        false
-```
-
-The flag to enable bundle code cache between execution.
-
-Enable the cache code to improve the execution time of big bundle files.
-
-:::note neon-pro
-
-This feature is only available in Neon Pro.
-
-:::
-
 ### `env` {#env}
 
 ```
@@ -151,12 +129,6 @@ This feature is only available in Neon Pro.
 
 The environment name passed to the bundle.
 
-:::warning
-
-The environment name may be restricted by the application.
-
-:::
-
 ### `container` {#container}
 
 ```
@@ -166,12 +138,6 @@ The environment name may be restricted by the application.
 ```
 
 The HTML identifier of the container to render the application.
-
-:::warning
-
-The value should match to your application.
-
-:::
 
 ### `state` {#state}
 
@@ -192,61 +158,58 @@ The value should match to your application.
 
 :::
 
-### `timeout` {#timeout}
-
-```
-    Syntax:         timeout: <duration>
-    Type:           numeric
-    Default:        200
-    Unit:           milliseconds
-```
-
-The timeout to execute the bundle.
-
 ### `maxVMs` {#maxVMs}
 
 ```
     Syntax:         maxVMs: <count>
     Type:           numeric
-    Default:        number of detected CPUs
-    Minimum:        1
+    Default:        4
 ```
 
-The number of Javascript VMs to run simultaneously.
+The maximum number of Javascript VMs to run simultaneously.
 
-### `minSpareVMs` {#minSpareVMs}
+:::warning
 
-```
-    Syntax:         minSpareVMs: <count>
-    Type:           numeric
-    Minimum:        0
-    Default:        0
-```
-
-The minimum number of VMs to keep in spare.
-
-:::note neon-pro
-
-This feature is only available in Neon Pro.
+This setting must be configured following the available memory and CPU resources.
 
 :::
 
-### `maxSpareVMs` {#maxSpareVMs}
+### `vmMaxHeapSize`{#vmMaxHeapSize}
 
 ```
-    Syntax:         maxSpareVMs: <count>
+    Syntax:         vmMaxHeapSize: <size>
     Type:           numeric
-    Minimum:        0
     Default:        0
+    Unit:           bytes
 ```
 
-The maximum number of VMs to keep in spare.
+The maximum heap size in bytes of a Javascript VM.
 
-:::note neon-pro
+The default value configures a maximum heap size of 32Mb.
 
-This feature is only available in Neon Pro.
+### `vmStackSize`{#vmStackSize}
 
-:::
+```
+    Syntax:         vmStackSize: <size>
+    Type:           numeric
+    Default:        0
+    Unit:           bytes
+```
+
+The stack size in bytes of a Javascript VM.
+
+The default value configures an unlimited stack size.
+
+### `vmTimeout` {#vmTimeout}
+
+```
+    Syntax:         vmTimeout: <duration>
+    Type:           numeric
+    Default:        1000
+    Unit:           milliseconds
+```
+
+The timeout to make a render with a Javascript VM.
 
 ### `cache` {#cache}
 
@@ -284,12 +247,6 @@ The maximum number of items in the cache.
 
 When this limit is reached, the least resource used is evicted, meaning only the most used resources are kept in the cache.
 
-:::warning
-
-This option limits the memory usage of the server instance.
-
-:::
-
 ### `cacheMinBodySize` {#cacheMinBodySize}
 
 ```
@@ -317,6 +274,56 @@ This feature is only available in Neon Pro.
 ```
 
 The maximum body size of the render to allow caching.
+
+:::note neon-pro
+
+This feature is only available in Neon Pro.
+
+:::
+
+### `cacheLock` {#cacheLock}
+
+```
+    Syntax:         cacheLock: <flag>
+    Type:           boolean
+    Default:        false
+```
+
+Enable the cache lock.
+
+The cache lock allows to prevent simultaneous rendering of the same page. The first render locks the cache and unlocks it after processing.
+
+:::note neon-pro
+
+This feature is only available in Neon Pro.
+
+:::
+
+### `cacheLockWait` {#cacheLockWait}
+
+```
+    Syntax:         cacheLockWait: <duration>
+    Type:           numeric
+    Unit:           millisecond
+```
+
+The wait time duration before rechecking the cache when the cache has been locked.
+
+:::note neon-pro
+
+This feature is only available in Neon Pro.
+
+:::
+
+### `cacheLockTimeout` {#cacheLockTimeout}
+
+```
+    Syntax:         cacheLockTimeout: <duration>
+    Type:           numeric
+    Unit:           millisecond
+```
+
+The timeout of the cache lock before allowing a new render.
 
 :::note neon-pro
 

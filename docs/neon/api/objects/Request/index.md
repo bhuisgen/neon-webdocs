@@ -34,7 +34,7 @@ interface Request {
 ### `method` {#method-method}
 
 ```typescript
-    method(): string;
+method(): string;
 ```
 
 Returns the request method.
@@ -42,7 +42,7 @@ Returns the request method.
 ### `proto` {#method-proto}
 
 ```typescript
-    proto(): string;
+proto(): string;
 ```
 
 Returns the request protocol.
@@ -50,7 +50,7 @@ Returns the request protocol.
 ### `protoMajor` {#method-protomajor}
 
 ```typescript
-    protoMajor(): string;
+protoMajor(): string;
 ```
 
 Returns the request protocol major version.
@@ -58,7 +58,7 @@ Returns the request protocol major version.
 ### `protoMinor` {#method-protominor}
 
 ```typescript
-    protoMinor(): string;
+protoMinor(): string;
 ```
 
 Returns the request protocol minor version.
@@ -66,7 +66,7 @@ Returns the request protocol minor version.
 ### `remoteAddr` {#method-remoteaddr}
 
 ```typescript
-    remoteAddr(): string;
+remoteAddr(): string;
 ```
 
 Returns the request remote address.
@@ -74,7 +74,7 @@ Returns the request remote address.
 ### `host` {#method-host}
 
 ```typescript
-    host(): string;
+host(): string;
 ```
 
 Returns the request host.
@@ -82,7 +82,7 @@ Returns the request host.
 ### `path` {#method-path}
 
 ```typescript
-    path(): string;
+path(): string;
 ```
 
 Returns the request path.
@@ -90,7 +90,7 @@ Returns the request path.
 ### `query` {#method-query}
 
 ```typescript
-    query(): Record<string, string[]>;
+query(): Record<string, string[]>;
 ```
 
 Returns the request query parameters.
@@ -98,7 +98,7 @@ Returns the request query parameters.
 ### `headers` {#method-headers}
 
 ```typescript
-    headers(): Record<string, string[]>;
+headers(): Record<string, string[]>;
 ```
 
 Returns the request headers.
