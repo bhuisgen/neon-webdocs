@@ -37,7 +37,7 @@ fetcher:
       rest:
         headers:
           Content-Type: application/json
-          Authorization: "Bearer: my_jwt_token"
+          Authorization: "Bearer my_jwt_token"
 
 loader:
   rules:
